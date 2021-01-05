@@ -7,7 +7,8 @@ const connectDB = async () => { // async/await always wrapped isnide try catch b
         //mongoose.connect returns a promise
         await mongoose.connect(db, { // pass object for deprecation
             useNewUrlParser: true,
-            useUnifiedTopology: true
+            useUnifiedTopology: true,
+            useCreateIndex: true
         }); 
         console.log('MongoDB connected...');
     
