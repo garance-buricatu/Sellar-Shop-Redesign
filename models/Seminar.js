@@ -25,10 +25,10 @@ const SeminarSchema = new mongoose.Schema({
     },
     difficulty: {
         type: String,
-        required: true
     },
     dateOfEvent: {
         type: Date,
+        required: true,
         default: Date.now
     },
     date: {
