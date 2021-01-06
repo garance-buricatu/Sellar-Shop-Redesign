@@ -8,7 +8,8 @@ const connectDB = async () => { // async/await always wrapped isnide try catch b
         await mongoose.connect(db, { // pass object for deprecation
             useNewUrlParser: true,
             useUnifiedTopology: true,
-            useCreateIndex: true
+            useCreateIndex: true,
+            useFindAndModify: false
         }); 
         console.log('MongoDB connected...');
     
