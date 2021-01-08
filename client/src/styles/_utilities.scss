@@ -1,8 +1,85 @@
-.dark-overlay {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.4);
+// Container
+.container {
+  max-width: $max-width;
+  margin: auto;
+  overflow: hidden;
+  padding: 0 2rem;
+  margin-top: 6rem;
+  margin-bottom: 3rem;
+}
+
+// Text styles
+
+.x-large {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: $dark-color;
+}
+
+.lead {
+  font-size: 1.5rem;
+  color: $dark-color;
+}
+
+.text-menu {
+  color: $dark-color;
+  padding-left: 1rem;
+}
+
+// Backgrounds
+
+// Buttons
+
+.btn {
+  display: inline-block;
+  background: $hover-color;
+  color: #333;
+  padding: 0.4rem 1.3rem;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  outline: none;
+  border-radius: 10px;
+
+  &.btn-primary {
+    font-family: "Raleway", sans-serif;
+    background: $button-color;
+    color: $primary-color;
+
+    &:hover {
+      background: lighten($button-color, 5%);
+    }
+  }
+
+  &.btn-dark {
+  }
+
+  &.btn-success {
+  }
+
+  &.btn-danger {
+  }
+}
+
+//Alerts
+.alert {
+  padding: 0.8rem;
+  margin: 1rem;
+  opacity: 0.9;
+  //background:
+  color: #333;
+
+  &.alert-primary {
+  }
+
+  &.alert-dark {
+  }
+
+  &.alert-sucess {
+  }
+
+  &.alert-danger {
+  }
 }

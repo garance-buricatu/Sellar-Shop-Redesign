@@ -1,0 +1,40 @@
+// Variables
+$max-width: 1100px;
+$primary-color: #fefefa;
+$secondary-color: #f8f5ed;
+$dark-color: #343a40;
+$hover-color: #e0e0e0;
+$button-color: #99738e;
+
+//Set background and text color
+
+// Margin & Padding
+$spaceamounts: (1, 2, 3, 4, 5);
+
+// loop through spaceamounts list
+@each $space in $spaceamounts {
+  // All around margin
+  .m-#{$space} {
+    margin: #{$space}rem;
+  }
+
+  // Vertical margin - margin only on top and bottom
+  .my-#{$space} {
+    margin: #{$space}rem 0; // margin 0 on left and right
+  }
+
+  // All around apdding
+  .p-#{$space} {
+    padding: #{$space}rem;
+  }
+
+  // Vertical padding - padding only on top and bottom
+  .py-#{$space} {
+    padding: #{$space}rem 0; // padding 0 on left and right
+  }
+
+  // Horizontal padding
+  .px-#{$space} {
+    padding: 0 #{$space}rem;
+  }
+}
