@@ -88,7 +88,7 @@ router.post(
 );
 
 // @route   PUT api/profiles/awards
-// @desc    Add projects to profile
+// @desc    Add awards to profile
 // @access  Private
 
 router.put(

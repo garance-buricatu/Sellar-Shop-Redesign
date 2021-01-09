@@ -1,30 +1,45 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './styles/App.scss';
 
 //Redux
 import { Provider } from 'react-redux'; // connects react with redux
 import store from './store';
+import { loadUser } from './actions/auth';
+import setAuthToken from './utils/setAuthToken';
+
+import PrivateRoute from './components/routing/PrivateRoute';
 
 import Login from './components/dashboard/Login';
 import Navbar from './components/layout/Navbar';
 import Dashboard from './components/dashboard/Dashboard';
 import Home from './components/home/Home';
+import Alert from './components/layout/Alert';
 
-const App = () => (
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
+
+const App = () => {
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []); //only runs once, when mounted
+
+  return (
   <Provider store={store}>
     <Router>
       <Fragment className="App">
         <Navbar/>
-        <Route exact path="/" component={Home} />
         <section classname="container">
+          <Alert />
           <Switch>
-          <Route exact path="/login" component={Login}/>
-            <Route exact path="/dashboard" component={Dashboard}/>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/login" component={Login}/>
+            <PrivateRoute exact path="/dashboard" component={Dashboard}/>
           </Switch>
         </section>
       </Fragment>
     </Router>
   </Provider>
-);
+  )};
 export default App;

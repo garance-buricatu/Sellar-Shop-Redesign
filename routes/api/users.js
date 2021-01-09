@@ -24,7 +24,7 @@ async (req, res) => {
         return res.status(400).json({ errors: errors.array()});
     }
 
-    const { name, email, password, userType } = req.body;
+    const { name, email, password, userType, avatar } = req.body;
 
     try {
         // See if user exists
@@ -33,13 +33,6 @@ async (req, res) => {
         if(user) {
             res.status(400).json({errors: [{ msg: 'User already exists' }]});
         }
-
-        // Get user's gravatar
-        const avatar = gravatar.url(email, {
-            s: '200', // deafult size
-            r: 'pg', // rating
-            d: 'mm' // deafult
-        });
 
         user = new User({
             name,
@@ -86,7 +79,10 @@ async (req, res) => {
 router.post(
     '/setPassword', 
     [auth,
-        [check('password', 'Please enter a password with 6 or more characters').isLength({ min:6 })]
+        [
+            check('curr_password', 'Current password is required').isLength({ min:6 }),
+            check('new_password', 'Please enter a password with 6 or more characters').isLength({ min:6 })
+        ]
     ],  
     async (req, res) => {
         const errors = validationResult(req);
@@ -94,24 +90,28 @@ router.post(
             return res.status(400).json({ errors: errors.array()});
         }
 
-        const { password } = req.body;
+        const { curr_password, new_password, new_password2 } = req.body;
 
         try {
             const user = await User.findById(req.user.id);
 
             if (user) {
 
+                if (new_password !== new_password2){
+                    return res.status(400).json({ errors: [{ msg: 'Passwords do not match' }] });
+                }
+
                 const isMatch = await bcrypt.compare(
-                    password, // password that user enters (in request) 
+                    curr_password, // password that user enters (in request) 
                     user.password // password of user found in database
                 );
-                if (isMatch) {
-                    return res.status(400).json({ errors: [{ msg: 'Cannot use default password.' }] });
+                if (!isMatch) {
+                    return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
                 }
 
                 // Encrypt new password
                 const salt = await bcrypt.genSalt(10);
-                user.password = await bcrypt.hash(password, salt);
+                user.password = await bcrypt.hash(new_password, salt);
 
                 // Save user
                 await user.save();

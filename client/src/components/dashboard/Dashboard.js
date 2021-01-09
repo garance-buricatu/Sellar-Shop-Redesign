@@ -1,49 +1,101 @@
-import React from 'react'
+import React, { useState, Fragment } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { logout } from '../../actions/auth';
 
-const Dashboard = () => {
+import ArtworksTab from './ArtworksTab';
+import ProfileTab from './ProfileTab';
+import SeminarTab from './SeminarTab';
+import Account from './Account';
+//import Spinner from '../layout/Spinner';
+
+const Dashboard = ({ logout, auth: { loading, user } }) => {
+    
+    const [selectedTab, setSelectedTab] = useState('artworks');
+
     return (
-        <div className="dashboard">
-            <div className="sidebar">
-                <div className="header">
-                    <h1 className="lead">
-                        Owner Name
-                    </h1>
-                    <p>Admin</p>
-                </div>
-                <div className="menu">
-                    <div>
-                        <div className="list-item">
-                            <i class="fa fa-picture-o" aria-hidden="true"></i>
-                            <p className="text-menu">Edit Artworks</p>
+        <Fragment>
+            { !loading && (
+                <div className="dashboard">
+                    <div className="sidebar">
+                        <div className="header">
+                            <h1 className="lead">
+                                {user && user.name}
+                            </h1>
+                            <p>Admin</p>
                         </div>
-                        <div className="list-item">
-                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                            <p className="text-menu">Edit Seminar</p>
-                        </div>
-                        <div className="list-item">
-                            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                            <p className="text-menu">Edit Profile</p>
+                        <div className="menu">
+                            <div>
+                                <div 
+                                    className="list-item"
+                                    onClick={() => setSelectedTab('artworks')}
+                                >
+                                    <i class="fa fa-picture-o" aria-hidden="true"></i>
+                                    <p className="text-menu">Edit Artworks</p>
+                                </div>
+                                <div 
+                                    className="list-item"
+                                    onClick={() => setSelectedTab('seminars')}
+                                >
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    <p className="text-menu">Edit Seminar</p>
+                                </div>
+                                <div 
+                                    className="list-item"
+                                    onClick={() => setSelectedTab('profiles')}
+                                >
+                                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                    <p className="text-menu">Edit Profile</p>
+                                </div>
+                            </div>
+                            <div>
+                                <div 
+                                    className="list-item"
+                                    onClick={() => setSelectedTab('account')}
+                                >
+                                    <i class="fa fa-cog" aria-hidden="true"></i>
+                                    <p className="text-menu">My Account</p>
+                                </div>
+                                <div 
+                                    className="list-item"
+                                    onClick={logout}
+                                >
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                    <p className="text-menu">Logout</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        <div className="list-item">
-                            <i class="fa fa-cog" aria-hidden="true"></i>
-                            <p className="text-menu">My Account</p>
-                        </div>
-                        <div className="list-item">
-                            <i class="fa fa-sign-out" aria-hidden="true"></i>
-                            <p className="text-menu">Logout</p>
+                    <div className="main">
+                        <div className="main-inner m-4">
+                        {
+                            selectedTab === 'artworks' ? (
+                                <ArtworksTab />
+                            ) : selectedTab === 'profiles' ? (
+                                <ProfileTab />
+                            ) : selectedTab === 'seminars' ? (
+                                <SeminarTab />
+                            ) : selectedTab === 'account' ? (
+                                <Account />
+                            ) : (
+                                <h1>404</h1>
+                            )
+                        }
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="main">
-                <div className="main-inner m-4">
-                    test
-                </div>
-            </div>
-        </div>
+            )}
+        </Fragment>
     )
 }
 
-export default Dashboard
+Dashboard.propTypes = {
+    logout: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    auth: state.auth
+});
+
+export default connect(mapStateToProps, { logout })(Dashboard);

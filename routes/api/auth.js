@@ -46,7 +46,7 @@ async (req, res) => {
         let user = await User.findOne({ email });
 
         if(!user) {
-            res.status(400).json({errors: [{ msg: 'Invalid Credentials' }]});
+            return res.status(400).json({errors: [{ msg: 'Invalid Credentials' }]});
         }
  
         // Make usre password matches with found user (using bcrypt's compare method)
@@ -56,7 +56,7 @@ async (req, res) => {
         );
 
         if (!isMatch) {
-            res.status(400).json({errors: [{ msg: 'Invalid Credentials' }]});
+            return res.status(400).json({errors: [{ msg: 'Invalid Credentials' }]});
         }
 
         // Return the json web token

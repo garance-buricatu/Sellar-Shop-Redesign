@@ -77,9 +77,13 @@
   &.alert-dark {
   }
 
-  &.alert-sucess {
+  &.alert-success {
+    background-color: green;
+    color: white;
   }
 
   &.alert-danger {
+    background-color: red;
+    color: white;
   }
 }
