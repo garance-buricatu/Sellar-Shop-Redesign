@@ -5,8 +5,7 @@ $secondary-color: #f8f5ed;
 $dark-color: #343a40;
 $hover-color: #e0e0e0;
 $button-color: #99738e;
-
-//Set background and text color
+$button-dark: #6f5166;
 
 // Margin & Padding
 $spaceamounts: (1, 2, 3, 4, 5);
@@ -21,6 +20,10 @@ $spaceamounts: (1, 2, 3, 4, 5);
   // Vertical margin - margin only on top and bottom
   .my-#{$space} {
     margin: #{$space}rem 0; // margin 0 on left and right
+  }
+
+  .mx-#{$space} {
+    margin: 0 #{$space}rem; // margin 0 on left and right
   }
 
   // All around apdding

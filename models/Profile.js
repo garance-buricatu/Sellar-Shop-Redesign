@@ -9,6 +9,9 @@ const ProfileSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+    avatar: {
+        type: String
+    },
     awards: [
         {
             title : {

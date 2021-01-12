@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
         const BonnieUser = await User.findOne({ name: 'Bonnie Frederico'});
         
         // get Bonnie's profile and populate with name and avatar from user
-        const profile = await Profile.findOne({ user: BonnieUser.id }).populate('user', ['name', 'avatar']);
+        const profile = await Profile.findOne({ user: BonnieUser.id }).populate('user', ['name', 'email']);
 
         if (!profile){
             return res.status(400).json({ msg: 'There is no profile found'});
@@ -37,26 +37,17 @@ router.get('/', async (req, res) => {
 
 router.post(
     '/', 
-    [ 
-        auth,
-        [
-            check('description', 'Please add a description of yourself').not().isEmpty()
-        ]
-    ], 
+    auth,
     async (req, res) => {
-        const errors = validationResult(req);
 
-        if (!errors.isEmpty()){
-            return res.status(400).json({ errors: errors.array() });
-        }
-
-        const { description } = req.body;
+        const { description, avatar } = req.body;
 
         // Build profile object
         const profileFields = {};
         profileFields.user = req.user.id;
 
         if (description) profileFields.description = description;
+        if (avatar) profileFields.avatar = avatar;
 
         try {
 
@@ -115,6 +106,10 @@ router.put(
 
         try {
             const profile = await Profile.findOne({ user: req.user.id });
+
+            if (!profile){
+                res.status(400).json({'msg': 'Profile was not found'});
+            }
 
             profile.awards.unshift(newAwards);
 

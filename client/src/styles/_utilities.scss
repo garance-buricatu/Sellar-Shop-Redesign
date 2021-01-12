@@ -54,12 +54,26 @@
   }
 
   &.btn-dark {
+    font-family: "Raleway", sans-serif;
+    background: $button-dark;
+    color: $primary-color;
+
+    &:hover {
+      background: lighten($button-color, 5%);
+    }
   }
 
   &.btn-success {
   }
 
   &.btn-danger {
+    font-family: "Raleway", sans-serif;
+    background: red;
+    color: $primary-color;
+
+    &:hover {
+      background: lighten($button-color, 3%);
+    }
   }
 }
 

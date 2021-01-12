@@ -16,6 +16,10 @@ body {
   color: #333;
 }
 
+a {
+  text-decoration: none;
+}
+
 .list-item {
   display: flex;
   align-items: center;
@@ -99,11 +103,11 @@ body {
       border-top: 1px solid $dark-color;
 
       .artworks {
-        display: flex;
-        align-content: stretch;
-      }
-
-      .account {
+        display: block;
+        min-height: 1px;
+        width: 100%;
+        overflow: auto;
+        background-color: $secondary-color;
       }
     }
   }

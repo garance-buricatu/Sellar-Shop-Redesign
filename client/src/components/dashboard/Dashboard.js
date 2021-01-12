@@ -6,6 +6,7 @@ import { logout } from '../../actions/auth';
 import ArtworksTab from './ArtworksTab';
 import ProfileTab from './ProfileTab';
 import SeminarTab from './SeminarTab';
+import AwardsTab from './AwardsTab';
 import Account from './Account';
 //import Spinner from '../layout/Spinner';
 
@@ -47,6 +48,13 @@ const Dashboard = ({ logout, auth: { loading, user } }) => {
                                     <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                                     <p className="text-menu">Edit Profile</p>
                                 </div>
+                                <div 
+                                    className="list-item"
+                                    onClick={() => setSelectedTab('awards')}
+                                >
+                                    <i class="fa fa-trophy" aria-hidden="true"></i>
+                                    <p className="text-menu">Edit Awards</p>
+                                </div>
                             </div>
                             <div>
                                 <div 
@@ -75,6 +83,8 @@ const Dashboard = ({ logout, auth: { loading, user } }) => {
                                 <ProfileTab />
                             ) : selectedTab === 'seminars' ? (
                                 <SeminarTab />
+                            ) : selectedTab === 'awards' ? (
+                                <AwardsTab />
                             ) : selectedTab === 'account' ? (
                                 <Account />
                             ) : (

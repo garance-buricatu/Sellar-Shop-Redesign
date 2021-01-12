@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const SeminarTab = props => {
     return (
         <div>
-            seminar tab
+           
         </div>
     )
 }

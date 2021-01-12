@@ -1,12 +1,16 @@
 import React, { useEffect, useState, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
-import { getBonnieProfile } from '../../actions/profile'
-import Spinner from '../layout/Spinner'
-import { Link } from 'react-router-dom';
+import { getBonnieProfile } from '../../actions/profile';
+import { createProfile } from '../../actions/profile';
+
+import { Link, withRouter } from 'react-router-dom';
 import { Editor } from '@tinymce/tinymce-react'
 
-const ProfileTab = ({ getBonnieProfile, auth, profile: { profile, loading } }) => {
+import Spinner from '../layout/Spinner'
+
+
+const ProfileTab = ({ getBonnieProfile, createProfile, profile: { profile, loading }, history }) => {
 
     const [formData, setFormData] = useState({
         avatar: '',
@@ -21,7 +25,7 @@ const ProfileTab = ({ getBonnieProfile, auth, profile: { profile, loading } }) =
     useEffect(() => {
         getBonnieProfile();
         setFormData({
-            avatar: loading || !profile.user.avatar ? '' : profile.user.avatar,
+            avatar: loading || !profile.avatar ? '' : profile.avatar,
             description: loading || !profile.description ? '' : profile.description
         });
     }, [getBonnieProfile]);
@@ -36,19 +40,39 @@ const ProfileTab = ({ getBonnieProfile, auth, profile: { profile, loading } }) =
     const handleEditorChange = (content, editor) => {
         console.log('Content was updated:', content);
         setFormData({...formData, description: content });
-      };
+    };
+
+    const onSubmit = e => {
+        e.preventDefault();
+        createProfile(formData, history, true);
+    }
 
     return loading && profile === null ? (
         <Spinner />
     ) : (
         <Fragment>
-            <h1 className="lead m-2">Edit Profile</h1>
+             <h1 className="lead m-2">Edit Profile</h1>
             {profile !== null ? (
                 <Fragment>
-                    <form className="form m-2">
+                    <form className="form mx-2" onSubmit={e => onSubmit(e)}>
                         <div className="form-group">
                             <p className="form-text">
-                                <strong>Edit Description : </strong>
+                                <strong>Profile Picture : *</strong>
+                            </p>
+                            <img
+                                src={avatar}
+                            />
+                            <input 
+                                type="text"
+                                placeholder="Path to picture"
+                                name="avatar"
+                                value={avatar}
+                                onChange={e => onChange(e)}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <p className="form-text">
+                                <strong>Description : </strong>
                             </p>
                             <Editor
                                 initialValue={description ? description : '<p>Initial Content</p>'}
@@ -70,6 +94,7 @@ const ProfileTab = ({ getBonnieProfile, auth, profile: { profile, loading } }) =
                                 onEditorChange={handleEditorChange}
                             />
                         </div>
+                        <input type="submit" className="btn btn-primary my-1" />
                     </form>
                 </Fragment>
             ) : (
@@ -89,7 +114,8 @@ const ProfileTab = ({ getBonnieProfile, auth, profile: { profile, loading } }) =
 ProfileTab.propTypes = {
     auth: PropTypes.object.isRequired,
     profile: PropTypes.object.isRequired,
-    getBonnieProfile: PropTypes.func.isRequired
+    getBonnieProfile: PropTypes.func.isRequired,
+    createProfile: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -97,5 +123,5 @@ const mapStateToProps = state => ({
     profile: state.profile
 });
 
-export default connect(mapStateToProps, { getBonnieProfile })(ProfileTab)
+export default connect(mapStateToProps, { getBonnieProfile, createProfile })(ProfileTab)
 

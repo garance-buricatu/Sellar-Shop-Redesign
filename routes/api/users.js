@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
-const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config'); // to obtain jwtSecret
@@ -24,7 +23,7 @@ async (req, res) => {
         return res.status(400).json({ errors: errors.array()});
     }
 
-    const { name, email, password, userType, avatar } = req.body;
+    const { name, email, password, userType } = req.body;
 
     try {
         // See if user exists
@@ -38,8 +37,7 @@ async (req, res) => {
             name,
             email,
             password,
-            userType,
-            avatar
+            userType
         });
 
         // Encrypt password

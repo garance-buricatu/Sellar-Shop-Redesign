@@ -21,3 +21,14 @@
     border: 1px solid #ccc;
   }
 }
+
+.table {
+  width: 90%;
+  th {
+    background-color: $hover-color;
+    padding: 0.5rem;
+  }
+  td {
+    padding: 0.5rem;
+  }
+}
