@@ -1,6 +1,8 @@
 @import "./config";
 @import "./utilities";
 @import "./form";
+@import "./table";
+@import "./grid";
 
 * {
   box-sizing: border-box;
@@ -18,6 +20,12 @@ body {
 
 a {
   text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .list-item {
@@ -103,12 +111,16 @@ a {
       border-top: 1px solid $dark-color;
 
       .artworks {
-        display: block;
-        min-height: 1px;
-        width: 100%;
-        overflow: auto;
-        background-color: $secondary-color;
+        background-color: $primary-color;
       }
     }
   }
+}
+
+.edit-artwork {
+  background-color: $secondary-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

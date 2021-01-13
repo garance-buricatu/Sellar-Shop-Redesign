@@ -10,4 +10,11 @@ export const PROFILE_ERROR = 'PROFILE_ERROR';
 export const CLEAR_PROFILE = 'CLEAR_PROFILE';
 export const UPDATE_PROFILE = 'UPDATE_PROFILE';
 export const AWARD_ERROR = 'AWARD_ERROR';
+export const GET_ARTWORKS = 'GET_ARTWORKS';
+export const ADD_ARTWORK = 'ADD_ARTWORK';
+export const ARTWORK_ERROR = 'ARTWORK_ERROR';
+export const DELETE_ARTWORK = 'DELETE_ARTWORK';
+export const CLEAR_ARTWORK = 'CLEAR_ARTWORK';
+export const EDIT_ARTWORK = 'EDIT_ARTWORK';
+export const GET_ARTWORK = 'GET_ARTWORK';
 

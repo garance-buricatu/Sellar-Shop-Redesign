@@ -4,41 +4,53 @@ import { connect } from 'react-redux'
 import { deleteAward } from '../../actions/profile'
 import Moment from 'react-moment'
 
-const AllAwards = ({ award, deleteAward }) => {
-    const awards = award.map(award => (
+const AllAwards = ({ awards, deleteAward }) => {
+    const awardList = awards.map(award => (
         <tr key={award._id}>
-            <td>{award.title}</td>
-            <td>{award.description}</td>
-            <td>
+            <td><div>{award.title}</div></td>
+            <td><div>{award.description}</div></td>
+            <td><div>
                 {award.date === null ? 
                 (<p>N/A</p>) : (
                     <Moment format='YYYY/MM/DD'>{award.date}</Moment>
                 )}
-            </td>
-            <td>
+                </div></td>
+            <td className="actions">
+                <div>
                 <button 
                     className="btn btn-danger"
                     onClick={() => deleteAward(award._id)}
                 >
                     Delete
                 </button>
+                </div>
             </td>
         </tr>
     ));
     return (
-        <div className="all-awards">
-            <h2 className="m-2">All Awards</h2>
-            <table className="table m-2">
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Date</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>{awards}</tbody>
-            </table>
+        <div>
+            {awards.length === 0 ? (
+                <div className="p-2">
+                    <h1 className="lead">
+                        No Awards Yet
+                    </h1>
+                </div>
+            ) : (
+                <div className="all-awards">
+                    <h2 className="m-2">All Awards</h2>
+                    <table className="table m-2">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Date</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>{awardList}</tbody>
+                    </table>
+                </div>
+            )}
         </div>
     )
 }

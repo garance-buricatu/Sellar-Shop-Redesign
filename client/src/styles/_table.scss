@@ -1,0 +1,26 @@
+.table {
+  width: 100%;
+  table-layout: fixed;
+
+  th {
+    background-color: $hover-color;
+    padding: 0.5rem;
+  }
+  td {
+    padding: 0.5rem;
+    border-bottom: 2px solid $hover-color;
+
+    div {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .actions {
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}

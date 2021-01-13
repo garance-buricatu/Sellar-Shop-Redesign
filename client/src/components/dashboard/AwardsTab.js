@@ -75,7 +75,7 @@ const Awards = ({ addAwards, getBonnieProfile, profile: { profile, loading }, hi
                 <input type="submit" className="btn btn-primary my-1" />
             </form>
             {loading || profile===null ? (<Spinner />) : (
-                <AllAwards award={profile.awards}/>
+                <AllAwards awards={profile.awards}/>
             )}
         </div>
     )

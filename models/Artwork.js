@@ -7,7 +7,8 @@ const ArtworkSchema = new mongoose.Schema({
     },
     title: {
         type: String, 
-        required: true
+        required: true,
+        unique: true
     },
     photoURL: {
         type: String,

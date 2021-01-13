@@ -12,6 +12,14 @@ import Spinner from '../layout/Spinner'
 
 const ProfileTab = ({ getBonnieProfile, createProfile, profile: { profile, loading }, history }) => {
 
+    useEffect(() => {
+        getBonnieProfile();
+        setFormData({
+            avatar: loading || !profile.avatar ? '' : profile.avatar,
+            description: loading || !profile.description ? '' : profile.description
+        });
+    }, [getBonnieProfile]);
+    
     const [formData, setFormData] = useState({
         avatar: '',
         description: ''
@@ -21,14 +29,6 @@ const ProfileTab = ({ getBonnieProfile, createProfile, profile: { profile, loadi
         avatar,
         description
     } = formData;
-
-    useEffect(() => {
-        getBonnieProfile();
-        setFormData({
-            avatar: loading || !profile.avatar ? '' : profile.avatar,
-            description: loading || !profile.description ? '' : profile.description
-        });
-    }, [getBonnieProfile]);
 
     const onChange = (e) => {
         setFormData({
@@ -59,15 +59,16 @@ const ProfileTab = ({ getBonnieProfile, createProfile, profile: { profile, loadi
                             <p className="form-text">
                                 <strong>Profile Picture : *</strong>
                             </p>
-                            <img
-                                src={avatar}
-                            />
                             <input 
-                                type="text"
+                                type="url"
                                 placeholder="Path to picture"
                                 name="avatar"
                                 value={avatar}
                                 onChange={e => onChange(e)}
+                            />
+                            <img
+                                src={avatar}
+                                className="my-1"
                             />
                         </div>
                         <div className="form-group">

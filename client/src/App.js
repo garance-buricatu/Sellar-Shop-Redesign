@@ -14,6 +14,7 @@ import Login from './components/dashboard/Login';
 import Navbar from './components/layout/Navbar';
 import Dashboard from './components/dashboard/Dashboard';
 import Home from './components/home/Home';
+import EditArtwork from './components/dashboard/EditArtwork';
 import Alert from './components/layout/Alert';
 
 if (localStorage.token) {
@@ -36,6 +37,7 @@ const App = () => {
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login}/>
             <PrivateRoute exact path="/dashboard" component={Dashboard}/>
+            <PrivateRoute exact path="/edit-artwork/:id" component={EditArtwork}/>
           </Switch>
         </section>
       </Fragment>

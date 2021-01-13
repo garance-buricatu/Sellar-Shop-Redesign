@@ -1,6 +1,10 @@
 .form {
   &-group {
     margin: 1.2rem 0;
+
+    select {
+      font-family: "Raleway", sans-serif;
+    }
   }
   &-text {
     display: block;
@@ -12,6 +16,7 @@
   input[type="email"],
   input[type="password"],
   input[type="date"],
+  input[type="url"],
   select,
   textarea {
     display: block;
@@ -19,16 +24,5 @@
     padding: 0.4rem;
     font-size: 1.2rem;
     border: 1px solid #ccc;
-  }
-}
-
-.table {
-  width: 90%;
-  th {
-    background-color: $hover-color;
-    padding: 0.5rem;
-  }
-  td {
-    padding: 0.5rem;
   }
 }

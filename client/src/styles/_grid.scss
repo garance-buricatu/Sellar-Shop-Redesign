@@ -1,0 +1,38 @@
+.grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 90%;
+  grid-gap: 1em;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+
+  @media all and (min-width: 600px) {
+    grid-auto-flow: initial;
+    grid-template-columns: repeat(auto-fit, minmax(auto, 20em));
+    justify-content: center;
+  }
+
+  &-figure {
+    display: grid;
+    grid-template-rows: 15em 1fr;
+    grid-gap: 1em;
+  }
+
+  &-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// <ul className="grid">
+//     <li>
+//         <figure className="grid-figure">
+//             <img
+//                 className="grid-img"
+//                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCfrYqDmnmWv6PMcrrrWrLLQ6C92LZNoTykA&usqp=CAU"
+//             />
+//             <figcaption>After Rain (Jeshu John - designerspics.com</figcaption>
+//         </figure>
+//     </li>
+// </ul>

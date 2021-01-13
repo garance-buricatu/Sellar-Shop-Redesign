@@ -47,6 +47,7 @@ router.post(
         if (date) artworkFields.date = date;
 
         try {
+            // create
             let artwork = new Artwork(artworkFields);
 
             await artwork.save();
@@ -54,7 +55,52 @@ router.post(
             res.send(artwork);
 
 
-        } catch (error) {
+        } catch (err) {
+            console.error(err.message);
+            res.status(500).send('Server Error');
+        }
+    }
+);
+
+// @route   PUT api/artworks
+// @desc    Edit an artwork by id
+// @access  Private
+
+router.put('/:artwork_id', auth, async (req, res) => {
+        const {
+            title,
+            photoURL,
+            size,
+            medium,
+            date
+        } = req.body;
+
+        // Build artwork object
+        const artworkFields = {};
+        artworkFields.user = req.user.id;
+
+        if (title) artworkFields.title = title;
+        if (photoURL) artworkFields.photoURL = photoURL;
+        if (size) artworkFields.size = size;
+        if (medium) artworkFields.medium = medium;
+        if (date) artworkFields.date = date;
+
+        try {
+            let artwork = await Artwork.findById(req.params.artwork_id);
+
+            if (!artwork){
+                res.status(400).json({'msg': 'Artwork was not found'});
+            }
+            else {
+                artwork = await Artwork.findByIdAndUpdate(
+                    req.params.artwork_id,
+                    { $set: artworkFields },
+                    { new: true }
+                )
+
+                res.send(artwork);
+            }
+        } catch (err) {
             console.error(err.message);
             res.status(500).send('Server Error');
         }
@@ -68,7 +114,7 @@ router.post(
 router.get('/', async (req, res) => {
     try {
 
-        const artworks = await Artwork.find().populate('user', ['name', 'avatar']);
+        const artworks = await Artwork.find().populate('user', ['name']);
         res.json(artworks);
         
     } catch (err) {
@@ -78,7 +124,7 @@ router.get('/', async (req, res) => {
 });
 
 // @route   GET api/artworks/:artwork_id
-// @desc    Add an artwork by id
+// @desc    Get an artwork by id
 // @access  Public
 router.get('/:artwork_id', async (req, res) => {
     try {
@@ -90,7 +136,6 @@ router.get('/:artwork_id', async (req, res) => {
         res.json(artwork);
         
     } catch (err) {
-        console.error(err.message);
         if (err.kind == 'ObjectId'){
             return res.status(400).json({ msg: 'Artwork not found' });
         }
