@@ -113,6 +113,31 @@ ul {
       .artworks {
         background-color: $primary-color;
       }
+
+      .seminar {
+        background-color: $secondary-color;
+
+        &-inner-1 {
+          display: flex;
+          justify-content: center;
+        }
+
+        &-inner {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+        }
+
+        .o_day-picker {
+          width: 80%;
+          height: auto;
+          font-family: "Raleway", sans-serif;
+          border: none;
+          box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
+          padding: 1rem;
+          background-color: $primary-color;
+        }
+      }
     }
   }
 }
@@ -123,4 +148,8 @@ ul {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  &-inner {
+    width: 80%;
+  }
 }

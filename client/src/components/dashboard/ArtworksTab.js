@@ -66,7 +66,7 @@ const ArtworksTab = ({ getArtworks, deleteArtwork, artwork: { artworks, loading 
                 ) : loading ? (
                     <Spinner />
                 ) : (
-                    <div className='artworks m-4'>
+                    <div className='artworks m-2'>
                         <h1 className='lead'>All Artworks</h1>
                         <table className="table my-1">
                             <thead>

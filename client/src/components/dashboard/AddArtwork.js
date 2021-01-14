@@ -29,7 +29,7 @@ const AddArtwork = ({ addArtwork }) => {
     }
 
     return (
-        <div className="m-4">
+        <div className="m-2">
             <form 
                 className="form"
                 onSubmit={e => onSubmit(e)}

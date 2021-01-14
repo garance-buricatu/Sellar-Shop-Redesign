@@ -14,11 +14,14 @@ const ProfileTab = ({ getBonnieProfile, createProfile, profile: { profile, loadi
 
     useEffect(() => {
         getBonnieProfile();
+    }, [getBonnieProfile]);
+
+    useEffect(() => {
         setFormData({
             avatar: loading || !profile.avatar ? '' : profile.avatar,
             description: loading || !profile.description ? '' : profile.description
         });
-    }, [getBonnieProfile]);
+    }, [profile]);
     
     const [formData, setFormData] = useState({
         avatar: '',

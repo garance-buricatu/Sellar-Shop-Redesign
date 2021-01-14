@@ -13,11 +13,6 @@ export const getArtworks = () => async dispatch => {
         });
 
     } catch (err) {
-        const errors = err.response.data.errors;
-
-        if (errors) {
-            errors.forEach(error => dispatch(setAlert(error.msg, 'danger'))); // prints errors returned by endpoint
-        }
 
         dispatch({
             type: ARTWORK_ERROR,
@@ -67,6 +62,8 @@ export const addArtwork = (formData) => async dispatch => {
 export const getArtwork = id => async dispatch => {
     try {
         const res = await axios.get(`/api/artworks/${id}`);
+
+        dispatch({type: CLEAR_ARTWORK});
 
         dispatch({
             type: GET_ARTWORK,

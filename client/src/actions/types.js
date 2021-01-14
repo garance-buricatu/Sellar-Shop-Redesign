@@ -18,3 +18,7 @@ export const CLEAR_ARTWORK = 'CLEAR_ARTWORK';
 export const EDIT_ARTWORK = 'EDIT_ARTWORK';
 export const GET_ARTWORK = 'GET_ARTWORK';
 
+export const ADD_SEMINAR = 'ADD_SEMINAR';
+export const GET_SEMINARS = 'GET_SEMINARS';
+export const SEMINAR_ERROR = 'SEMINAR_ERROR';
+

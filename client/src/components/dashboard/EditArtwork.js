@@ -3,22 +3,11 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getArtwork, editArtwork } from '../../actions/artwork'
 
-import { withRouter } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 import Spinner from '../layout/Spinner'
 
 const EditArtwork = ({ getArtwork, editArtwork, artwork: {artwork, loading}, match, history }) => {
-    useEffect(() => { 
-        getArtwork(match.params.id);
-        setFormData({
-            title: loading || artwork === null || !artwork.title ? '': artwork.title,
-            photoURL: loading || artwork === null || !artwork.photoURL ? '': artwork.photoURL,
-            size: loading || artwork === null || !artwork.size ? '': artwork.size,
-            medium: loading || artwork === null || !artwork.medium ? '': artwork.medium,
-            date: loading || artwork === null || !artwork.date ? '': artwork.date
-        });
-    }, [getArtwork, match.params.id]);
-    
     const [formData, setFormData] = useState({
         title:'',
         photoURL:'',
@@ -36,19 +25,32 @@ const EditArtwork = ({ getArtwork, editArtwork, artwork: {artwork, loading}, mat
         editArtwork(artwork._id, formData, history);
     }
 
+    useEffect(() => { 
+        getArtwork(match.params.id);
+    }, [getArtwork, match.params.id]);
+
+    useEffect(() => { 
+        setFormData({
+            title: loading || artwork === null ? '': artwork.title,
+            photoURL: loading || artwork === null ? '': artwork.photoURL,
+            size: loading || artwork === null ? '': artwork.size,
+            medium: loading || artwork === null ? '': artwork.medium,
+            date: loading || artwork === null ? '': artwork.date
+        });
+    }, [artwork]);
+
     return (
         <div className="edit-artwork">
             <div><h1 className="form-text my-1">Edit Artwork</h1></div>
-            <div>
+            <img
+                src={artwork === null || loading ? <Spinner /> : photoURL}
+            />
+            <div className="edit-artwork-inner m-2">
                 {artwork === null || loading ? <Spinner /> : (
                     <form 
                         className="form"
                         onSubmit={e => onSubmit(e)}
                     >
-                        <img
-                            src={artwork.photoURL}
-                        />
-                    
                         <div className="form-group">
                             <p className="form-text">
                                 <strong>Title : </strong>
@@ -107,6 +109,7 @@ const EditArtwork = ({ getArtwork, editArtwork, artwork: {artwork, loading}, mat
                                 onChange={e => onChange(e)}
                             />
                         </div>
+                        <Link className="btn" to="/dashboard">Back</Link>
                         <input type="submit" className="btn btn-primary"/>
                     </form>
                 )}

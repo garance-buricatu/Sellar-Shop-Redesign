@@ -108,7 +108,7 @@ router.put('/:artwork_id', auth, async (req, res) => {
 );
 
 // @route   GET api/artworks
-// @desc    get all artworks
+// @desc    Get all artworks
 // @access  Public
 
 router.get('/', async (req, res) => {

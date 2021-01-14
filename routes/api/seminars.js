@@ -7,7 +7,7 @@ const { check, validationResult } = require('express-validator');
 const Seminar = require('../../models/Seminar');
 
 // @route   POST api/seminars
-// @desc    Create or edit seminar
+// @desc    Create seminar
 // @access  Private
 
 router.post(
@@ -15,7 +15,6 @@ router.post(
     [
         auth, 
             [
-                check('name', 'Name of seminar is required').not().isEmpty(),
                 check('project', 'Project of seminar is required').not().isEmpty(),
                 check('details', 'Details of seminar are required').not().isEmpty(),
                 check('dateOfEvent', 'Date of seminar is required').not().isEmpty()
@@ -29,7 +28,6 @@ router.post(
         }
 
         const {
-            name,
             photoURL,
             location,
             project,
@@ -42,7 +40,6 @@ router.post(
         const seminarFields = {};
         seminarFields.user = req.user.id;
 
-        if (name) seminarFields.name = name;
         if (photoURL) seminarFields.photoURL = photoURL;
         if (location) seminarFields.location = location;
         if (project) seminarFields.project = project;
@@ -65,16 +62,28 @@ router.post(
     }
 );
 
+// @route   GET api/seminars/
+// @desc    Get all seminars
+// @access  Public
+
+router.get('/', async (req, res) => {
+    try {
+
+        const seminars = await Seminar.find().populate('user', ['name']);
+        res.json(seminars);
+        
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
 // @route   PUT api/seminars/:seminar_id
 // @desc    Edit seminar by ID
 // @access  Private
 
 // @route   GET api/seminars/:seminar_id
 // @desc    Get seminar by ID
-// @access  Public
-
-// @route   GET api/seminars/
-// @desc    Get all seminars
 // @access  Public
 
 // @route   DELETE api/seminars/:seminar_id
