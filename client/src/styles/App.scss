@@ -117,15 +117,59 @@ ul {
       .seminar {
         background-color: $secondary-color;
 
+        .header-text {
+          text-align: center;
+          margin-top: 1rem;
+        }
+
         &-inner-1 {
           display: flex;
           justify-content: center;
+        }
+
+        &-inner-2 {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+
+          .display-seminar {
+            display: flex;
+            justify-content: center;
+
+            &-inner {
+              display: flex;
+              align-items: center;
+              background-color: $primary-color;
+              border-radius: 10px;
+              opacity: 0.8;
+              transition: 0.3s;
+
+              &:hover {
+                background-color: $hover-color;
+                opacity: 1;
+              }
+
+              &-img {
+                padding: 0.25rem;
+                border: 2px solid $dark-color;
+              }
+
+              &-details {
+                display: flex;
+                align-items: center;
+                .seminar-text {
+                  display: inline;
+                }
+              }
+            }
+          }
         }
 
         &-inner {
           display: flex;
           justify-content: center;
           flex-direction: column;
+          background-color: $primary-color;
         }
 
         .o_day-picker {
@@ -136,6 +180,10 @@ ul {
           box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
           padding: 1rem;
           background-color: $primary-color;
+
+          .o_selected-current-channel-day {
+            background: $select-primary-color !important;
+          }
         }
       }
     }

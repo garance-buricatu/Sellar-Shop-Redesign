@@ -37,7 +37,9 @@ export const addSeminar = (formData) => async dispatch => {
             payload: res.data // seminar
         });
 
-        dispatch(setAlert('Artwork Added', 'success'));        
+        dispatch(getSeminars());
+
+        dispatch(setAlert('Seminar Added', 'success'));        
 
     } catch (err) {
         console.log(err);
