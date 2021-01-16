@@ -14,7 +14,7 @@ import Login from './components/dashboard/Login';
 import Navbar from './components/layout/Navbar';
 import Dashboard from './components/dashboard/Dashboard';
 import Home from './components/home/Home';
-import EditArtwork from './components/dashboard/EditArtwork';
+import EditArtwork from './components/dashboard/artworks/EditArtwork';
 import Alert from './components/layout/Alert';
 
 if (localStorage.token) {

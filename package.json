@@ -23,7 +23,6 @@
     "@fortawesome/fontawesome-free": "^5.15.1",
     "@tinymce/tinymce-react": "^3.8.4",
     "bcryptjs": "^2.4.3",
-    "bootstrap": "^4.5.3",
     "config": "^3.3.3",
     "express": "^4.17.1",
     "express-validator": "^6.9.1",
@@ -31,8 +30,6 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.9",
     "node-sass": "^4.14.1",
-    "react-bootstrap": "^1.4.3",
-    "react-calendar-multiday": "^0.0.22",
     "request": "^2.88.2",
     "uuid": "^3.4.0"
   },

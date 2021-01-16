@@ -12,7 +12,6 @@ export default function(state = initialState, action) {
 
     switch(type){
         case ADD_ARTWORK:
-        case DELETE_ARTWORK:
         case EDIT_ARTWORK:
         case GET_ARTWORK:
             return {
@@ -39,6 +38,7 @@ export default function(state = initialState, action) {
                 artwork: null,
                 loading: false
             }
+        case DELETE_ARTWORK:
         default:
             return state;
     }

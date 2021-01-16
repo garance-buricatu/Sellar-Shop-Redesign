@@ -18,7 +18,8 @@ router.post(
             check('title', 'Title is required').not().isEmpty(),
             check('size', 'Size is required').not().isEmpty(),
             check('medium', 'Medium is required').not().isEmpty(),
-            check('photoURL', 'Photo URL is required').not().isEmpty()
+            check('photoURL', 'Photo URL is required').not().isEmpty(),
+            check('date', 'Year created is required').not().isEmpty()
         ]
     ], 
     async (req, res) => {

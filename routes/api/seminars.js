@@ -90,4 +90,16 @@ router.get('/', async (req, res) => {
 // @desc    Delete seminar by ID
 // @access  Private
 
+router.delete('/:seminar_id', auth, async (req, res) => {
+    try {
+        await Seminar.findByIdAndDelete(req.params.seminar_id);
+
+        res.json({ msg: 'Seminar deleted'});
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
 module.exports = router;

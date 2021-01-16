@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ADD_SEMINAR, SEMINAR_ERROR, GET_SEMINARS } from './types'
+import { ADD_SEMINAR, SEMINAR_ERROR, GET_SEMINARS, DELETE_SEMINAR } from './types'
 import { setAlert } from '../actions/alert'
 
 // get all seminars
@@ -54,4 +54,29 @@ export const addSeminar = (formData) => async dispatch => {
             payload: { msg: err.response.statusText, status: err.response.status }
         });
     }
+};
+
+// delete seminar
+export const deleteSeminar = id => async dispatch => {
+    if (window.confirm('Are you sure? This cannot be undone!')){
+        try {
+            const res = await axios.delete(`/api/seminars/${id}`);
+    
+            dispatch({
+                type: DELETE_SEMINAR,
+                payload: res.data //profile
+            })
+    
+            dispatch(getSeminars());
+    
+            dispatch(setAlert('Seminar Deleted', 'success'));
+    
+        } catch (err) {
+            dispatch({
+                type: SEMINAR_ERROR,
+                payload: { msg: err.response.statusText, status: err.response.status }
+            });
+        }
+    }
+    
 };

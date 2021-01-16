@@ -1,4 +1,4 @@
-import { ADD_SEMINAR, SEMINAR_ERROR, GET_SEMINARS } from '../actions/types'
+import { ADD_SEMINAR, SEMINAR_ERROR, GET_SEMINARS, DELETE_SEMINAR } from '../actions/types'
 
 const initialState = {
     seminar: null,
@@ -30,6 +30,7 @@ export default function(state = initialState, action) {
                 seminars: payload,
                 loading: false
             }
+        case DELETE_SEMINAR:
         default:
             return state;
     }

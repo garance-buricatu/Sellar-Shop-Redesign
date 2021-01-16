@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { getArtwork, editArtwork } from '../../actions/artwork'
+import { getArtwork, editArtwork } from '../../../actions/artwork'
 
 import { Link, withRouter } from 'react-router-dom'
 
-import Spinner from '../layout/Spinner'
+import Spinner from '../../layout/Spinner'
 
 const EditArtwork = ({ getArtwork, editArtwork, artwork: {artwork, loading}, match, history }) => {
     const [formData, setFormData] = useState({
@@ -77,7 +77,7 @@ const EditArtwork = ({ getArtwork, editArtwork, artwork: {artwork, loading}, mat
                         </div>
                         <div className="form-group">
                             <p className="form-text">
-                                <strong>Dimensions : </strong>
+                                <strong>Dimensions (in inches) : </strong>
                             </p>
                             <input 
                                 type="text"
@@ -103,7 +103,7 @@ const EditArtwork = ({ getArtwork, editArtwork, artwork: {artwork, loading}, mat
                                 <strong>Date :</strong>
                             </p>
                             <input 
-                                type="date"
+                                type="text"
                                 name="date"
                                 value={date}
                                 onChange={e => onChange(e)}

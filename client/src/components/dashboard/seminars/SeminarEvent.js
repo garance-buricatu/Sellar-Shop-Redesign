@@ -1,6 +1,15 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import {connect} from 'react-redux'
+import { deleteSeminar } from '../../../actions/seminar'
 
-export const SeminarEvent = ({sem}) => {
+export const SeminarEvent = ({ sem, setToggle, deleteSeminar }) => {
+
+    const onClick = () => {
+        deleteSeminar(sem._id);
+        setToggle(false);
+    }
+
     return (
         <div className="display-seminar m-1">
             <div className="display-seminar-inner p-1">
@@ -29,11 +38,21 @@ export const SeminarEvent = ({sem}) => {
                         {sem.details === null ? 'N/A' : sem.details}
                     </li>
                 </ul>
-                </div>
+            </div>
+            <button 
+                className="btn btn-danger mx-2"
+                onClick={onClick}
+            >
+                X
+            </button>
             </div>
             
         </div>
     )
 }
 
-export default SeminarEvent
+SeminarEvent.propTypes = {
+    deleteSeminar: PropTypes.func.isRequired,
+}
+
+export default connect(null, {deleteSeminar})(SeminarEvent)

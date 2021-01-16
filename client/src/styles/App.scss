@@ -172,8 +172,16 @@ ul {
           background-color: $primary-color;
         }
 
-        .o_day-picker {
-          width: 80%;
+        .purpleDay:not(.-selectedStart):not(.-selectedBetween):not(.-selectedEnd):not(.-selected) {
+          border: 3px solid rgba(156, 136, 255, 0.7) !important;
+
+          &:hover {
+            background-color: $select-primary-color;
+          }
+        }
+
+        .Calendar.-noFocusOutline.-ltr {
+          width: 60%;
           height: auto;
           font-family: "Raleway", sans-serif;
           border: none;
@@ -181,8 +189,8 @@ ul {
           padding: 1rem;
           background-color: $primary-color;
 
-          .o_selected-current-channel-day {
-            background: $select-primary-color !important;
+          .Calendar__weekDays {
+            color: $dark-color;
           }
         }
       }

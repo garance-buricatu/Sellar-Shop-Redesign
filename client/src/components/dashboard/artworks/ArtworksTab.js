@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { getArtworks, deleteArtwork } from '../../actions/artwork'
+import { getArtworks, deleteArtwork } from '../../../actions/artwork'
 import Moment from 'react-moment'
 
 
-import Spinner from '../layout/Spinner'
-import AddArtwork from './AddArtwork';
+import Spinner from '../../layout/Spinner'
+import AddArtwork from '../artworks/AddArtwork';
 
 //https://freefrontend.com/css-gallery/
 
@@ -29,10 +29,7 @@ const ArtworksTab = ({ getArtworks, deleteArtwork, artwork: { artworks, loading 
             <td><div>{art.size}</div></td>
             <td><div>{art.medium}</div></td>
             <td><div>
-                {art.date === null ? 
-                    (<p>N/A</p>) : (
-                    <Moment format='YYYY/MM/DD'>{art.date}</Moment>
-                )}
+                {art.date}
             </div></td>
             <td className="actions">
                 <div>
@@ -73,9 +70,9 @@ const ArtworksTab = ({ getArtworks, deleteArtwork, artwork: { artworks, loading 
                                 <tr>
                                     <th>Photo</th>
                                     <th>Title</th>
-                                    <th>Size</th>
+                                    <th>Dimensions (in inches)</th>
                                     <th>Medium</th>
-                                    <th>Date</th>
+                                    <th>Year Created</th>
                                     <th></th>
                                 </tr>
                             </thead>

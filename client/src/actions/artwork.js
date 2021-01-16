@@ -117,22 +117,25 @@ export const editArtwork = (id, formData, history) => async dispatch => {
 
 // delete artwork
 export const deleteArtwork = id => async dispatch => {
-    try {
-        const res = await axios.delete(`/api/artworks/${id}`);
-
-        dispatch({
-            type: DELETE_ARTWORK,
-            payload: res.data //profile
-        })
-
-        dispatch(getArtworks());
-
-        dispatch(setAlert('Artwork Deleted', 'success'));
-
-    } catch (err) {
-        dispatch({
-            type: ARTWORK_ERROR,
-            payload: { msg: err.response.statusText, status: err.response.status }
-        });
+    if (window.confirm('Are you sure? This cannot be undone!')){
+        try {
+            const res = await axios.delete(`/api/artworks/${id}`);
+    
+            dispatch({
+                type: DELETE_ARTWORK,
+                payload: res.data //profile
+            })
+    
+            dispatch(getArtworks());
+    
+            dispatch(setAlert('Artwork Deleted', 'success'));
+    
+        } catch (err) {
+            dispatch({
+                type: ARTWORK_ERROR,
+                payload: { msg: err.response.statusText, status: err.response.status }
+            });
+        }
     }
+    
 };

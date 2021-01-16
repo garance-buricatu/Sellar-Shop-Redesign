@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { addArtwork } from '../../actions/artwork'
+import { addArtwork } from '../../../actions/artwork'
 
 const AddArtwork = ({ addArtwork }) => {
     const [formData, setFormData] = useState({
@@ -61,7 +61,7 @@ const AddArtwork = ({ addArtwork }) => {
                 </div>
                 <div className="form-group">
                     <p className="form-text">
-                        <strong>Dimensions : *</strong>
+                        <strong>Dimensions (in inches) : *</strong>
                     </p>
                     <input 
                         type="text"
@@ -84,10 +84,11 @@ const AddArtwork = ({ addArtwork }) => {
                 </div>
                 <div className="form-group">
                     <p className="form-text">
-                        <strong>Date :</strong>
+                        <strong>Year created :</strong>
                     </p>
                     <input 
-                        type="date"
+                        type="text"
+                        placeholder="YYYY"
                         name="date"
                         value={date}
                         onChange={e => onChange(e)}

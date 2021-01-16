@@ -1,13 +1,13 @@
 import React, { useEffect, useState, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
-import { getBonnieProfile } from '../../actions/profile';
-import { createProfile } from '../../actions/profile';
+import { getBonnieProfile } from '../../../actions/profile';
+import { createProfile } from '../../../actions/profile';
 
 import { Link, withRouter } from 'react-router-dom';
 import { Editor } from '@tinymce/tinymce-react'
 
-import Spinner from '../layout/Spinner'
+import Spinner from '../../layout/Spinner'
 
 
 const ProfileTab = ({ getBonnieProfile, createProfile, profile: { profile, loading }, history }) => {

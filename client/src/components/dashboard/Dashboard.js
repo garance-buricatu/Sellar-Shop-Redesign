@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
 
-import ArtworksTab from './ArtworksTab';
-import ProfileTab from './ProfileTab';
-import SeminarTab from './SeminarTab';
+import ArtworksTab from './artworks/ArtworksTab';
+import ProfileTab from './profile/ProfileTab';
+import SeminarTab from './seminars/SeminarTab';
 import AwardsTab from './AwardsTab';
 import Account from './Account';
 //import Spinner from '../layout/Spinner';
