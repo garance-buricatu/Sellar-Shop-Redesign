@@ -27,6 +27,30 @@
   padding-left: 1rem;
 }
 
+.text-menu-home {
+  color: $dark-color;
+  font-size: 1rem;
+  padding-bottom: 1.25rem;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    color: $button-color;
+  }
+}
+
+.text-menu-small {
+  color: $dark-color;
+  font-size: 1rem;
+  padding-bottom: 0.5rem;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    color: $button-color;
+  }
+}
+
 // Backgrounds
 
 // Buttons

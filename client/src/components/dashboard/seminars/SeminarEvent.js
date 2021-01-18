@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import { deleteSeminar } from '../../../actions/seminar'
 
-export const SeminarEvent = ({ sem, setToggle, deleteSeminar }) => {
+export const SeminarEvent = ({ sem, setToggle, toggle, deleteSeminar }) => {
 
     const onClick = () => {
         deleteSeminar(sem._id);
-        setToggle(false);
+        setToggle(!toggle);
     }
 
     return (
@@ -37,6 +37,11 @@ export const SeminarEvent = ({ sem, setToggle, deleteSeminar }) => {
                         <p className="form-text seminar-text"><strong>Details: </strong></p>
                         {sem.details === null ? 'N/A' : sem.details}
                     </li>
+                    <li>
+                        <p className="form-text seminar-text"><strong>Time: </strong></p>
+                        {sem.time === null ? 'N/A' : sem.time}
+                    </li>
+                    {sem.recurring === null || sem.recurring === false ? '' : <li><p className="form-text seminar-text"><strong>Recurring</strong></p></li>}
                 </ul>
             </div>
             <button 

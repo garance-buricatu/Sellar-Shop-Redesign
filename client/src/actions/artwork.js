@@ -21,6 +21,63 @@ export const getArtworks = () => async dispatch => {
     }
 }; 
 
+// get all artworks (WATERCOLOR)
+export const getArtworksWatercolor = () => async dispatch => {
+    try {
+        const res = await axios.get('/api/artworks/watercolor'); // using token currently stored in local storage
+        
+        dispatch({
+            type: GET_ARTWORKS,
+            payload: res.data // array of all artworks (watercolor)
+        });
+
+    } catch (err) {
+
+        // dispatch({
+        //     type: ARTWORK_ERROR,
+        //     payload: { msg: err.response.statusText, status: err.response.status }
+        // });
+    }
+}; 
+
+// get all artworks (PENCIL)
+export const getArtworksPencil = () => async dispatch => {
+    try {
+        const res = await axios.get('/api/artworks/pencil'); // using token currently stored in local storage
+        
+        dispatch({
+            type: GET_ARTWORKS,
+            payload: res.data // array of all artworks (pencil)
+        });
+
+    } catch (err) {
+
+        dispatch({
+            type: ARTWORK_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
+    }
+}; 
+
+// get all artworks (OIL)
+export const getArtworksOil = () => async dispatch => {
+    try {
+        const res = await axios.get('/api/artworks/oil'); // using token currently stored in local storage
+        
+        dispatch({
+            type: GET_ARTWORKS,
+            payload: res.data // array of all artworks (oil)
+        });
+
+    } catch (err) {
+
+        dispatch({
+            type: ARTWORK_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
+    }
+}; 
+
 // add artwork
 export const addArtwork = (formData) => async dispatch => {
     try {

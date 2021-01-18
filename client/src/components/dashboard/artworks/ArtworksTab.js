@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -52,6 +52,7 @@ const ArtworksTab = ({ getArtworks, deleteArtwork, artwork: { artworks, loading 
 
     return (
         <div>
+            <a name="top"></a>
             <AddArtwork />
             {
                 artworks.length === 0 ? (
@@ -81,6 +82,9 @@ const ArtworksTab = ({ getArtworks, deleteArtwork, artwork: { artworks, loading 
                     </div>
                 )
             }
+            <a className="btn btn-primary m-2" href="#top">
+                Back to Top
+            </a>
         </div>
     )
 }

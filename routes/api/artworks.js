@@ -124,6 +124,54 @@ router.get('/', async (req, res) => {
     }
 });
 
+// @route   GET api/artworks
+// @desc    Get all artworks (WATERCOLOR)
+// @access  Public
+
+router.get('/watercolor', async (req, res) => {
+    try {
+
+        const artworks = await Artwork.find({'medium' : 'Watercolor'}).populate('user', ['name']);
+        res.json(artworks);
+        
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+// @route   GET api/artworks
+// @desc    Get all artworks (OIL)
+// @access  Public
+
+router.get('/oil', async (req, res) => {
+    try {
+
+        const artworks = await Artwork.find({'medium' : 'Oil'}).populate('user', ['name']);
+        res.json(artworks);
+        
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+// @route   GET api/artworks
+// @desc    Get all artworks (PENCIL)
+// @access  Public
+
+router.get('/pencil', async (req, res) => {
+    try {
+
+        const artworks = await Artwork.find({'medium' : 'Pencil'}).populate('user', ['name']);
+        res.json(artworks);
+        
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
 // @route   GET api/artworks/:artwork_id
 // @desc    Get an artwork by id
 // @access  Public

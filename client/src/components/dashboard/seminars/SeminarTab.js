@@ -37,7 +37,7 @@ const SeminarTab = ({ getSeminars, seminar : { seminars } }) => {
 
     const setSelectedDays = (date) => {
         let tempSeminars = seminars.filter(sem => ( // get seminar dates that macth with click item in calendar
-            new Date(sem.dateOfEvent).getDate() === date.day &&
+            new Date(sem.dateOfEvent).getDate() === (date.day - 1) &&
             new Date(sem.dateOfEvent).getMonth() === (date.month -1)  &&
             new Date(sem.dateOfEvent).getFullYear() === date.year
         ));
@@ -45,7 +45,7 @@ const SeminarTab = ({ getSeminars, seminar : { seminars } }) => {
         setCurrDate(new Date(date.year, date.month - 1, date.day));
         setChosenSeminars(tempSeminars);
         setToggle(!toggle);
-    }
+    };
 
     return (
         <div className="seminar p-1">
@@ -63,7 +63,7 @@ const SeminarTab = ({ getSeminars, seminar : { seminars } }) => {
                 }
                 {chosenSeminars.length > 0 && toggle && 
                     chosenSeminars.map(sem => (
-                        <SeminarEvent sem={sem} setToggle={setToggle}/>
+                        <SeminarEvent sem={sem} setToggle={setToggle} toggle={toggle}/>
                     ))
                 }
             </div>

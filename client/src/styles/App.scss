@@ -209,3 +209,57 @@ ul {
     width: 80%;
   }
 }
+
+.home {
+  display: grid;
+  grid-template-columns: minmax(300px, 20%) 1fr;
+
+  .sidebar {
+    background-color: $primary-color;
+    display: flex;
+    flex-direction: column;
+
+    .dropdown {
+      display: inline-block;
+      position: relative;
+
+      .dropdown-content {
+        display: none;
+        z-index: 1;
+
+        h1 {
+          display: block;
+        }
+      }
+
+      &:hover .dropdown-content {
+        display: block;
+      }
+
+      &:hover {
+        .dropdown-btn {
+          padding-bottom: 0.5rem;
+        }
+      }
+    }
+  }
+
+  .main {
+    background-color: $secondary-color;
+    &-inner {
+      background-color: $primary-color;
+      border-top: 1px solid $dark-color;
+    }
+  }
+}
+
+.view-artwork {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 50%;
+  }
+}

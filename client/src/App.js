@@ -16,6 +16,7 @@ import Dashboard from './components/dashboard/Dashboard';
 import Home from './components/home/Home';
 import EditArtwork from './components/dashboard/artworks/EditArtwork';
 import Alert from './components/layout/Alert';
+import ViewArtwork from './components/home/ViewArtwork';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -38,6 +39,7 @@ const App = () => {
             <Route exact path="/login" component={Login}/>
             <PrivateRoute exact path="/dashboard" component={Dashboard}/>
             <PrivateRoute exact path="/edit-artwork/:id" component={EditArtwork}/>
+            <PrivateRoute exact path="/view-artwork/:id" component={ViewArtwork}/>
           </Switch>
         </section>
       </Fragment>

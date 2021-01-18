@@ -17,6 +17,7 @@ router.post(
             [
                 check('project', 'Project of seminar is required').not().isEmpty(),
                 check('details', 'Details of seminar are required').not().isEmpty(),
+                check('time', 'Time of seminar is required').not().isEmpty(),
                 check('dateOfEvent', 'Date of seminar is required').not().isEmpty()
             ]
     ],
@@ -33,7 +34,9 @@ router.post(
             project,
             details,
             difficulty,
-            dateOfEvent
+            time,
+            dateOfEvent,
+            recurring
         } = req.body;
 
         // Build a seminar object
@@ -45,7 +48,9 @@ router.post(
         if (project) seminarFields.project = project;
         if (details) seminarFields.details = details;
         if (difficulty) seminarFields.difficulty = difficulty;
+        if (time) seminarFields.time = time;
         if (dateOfEvent) seminarFields.dateOfEvent = dateOfEvent;
+        if (recurring) seminarFields.recurring = recurring;
 
         try {
             let seminar = new Seminar(seminarFields);
@@ -55,7 +60,7 @@ router.post(
             res.send(seminar);
 
 
-        } catch (error) {
+        } catch (err) {
             console.error(err.message);
             res.status(500).send('Server Error');
         }

@@ -42,9 +42,11 @@ const EditArtwork = ({ getArtwork, editArtwork, artwork: {artwork, loading}, mat
     return (
         <div className="edit-artwork">
             <div><h1 className="form-text my-1">Edit Artwork</h1></div>
-            <img
-                src={artwork === null || loading ? <Spinner /> : photoURL}
-            />
+            {artwork === null || loading ? <Spinner /> : (
+                <img
+                src={photoURL}
+                />
+            )} 
             <div className="edit-artwork-inner m-2">
                 {artwork === null || loading ? <Spinner /> : (
                     <form 

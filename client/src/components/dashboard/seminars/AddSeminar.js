@@ -13,28 +13,30 @@ const AddSeminar = ({ addSeminar }) => {
     }
 
     const [formData, setFormData] = useState({
-        name: '',
         photoURL:'',
         location:'',
         project:'',
         details:'',
         difficulty:'',
-        dateOfEvent: ''
+        time:'',
+        dateOfEvent: '',
+        recurring: false
     });
 
-    const { photoURL, location, project, details, difficulty, dateOfEvent } = formData;
+    const { photoURL, location, project, details, difficulty, time, dateOfEvent, recurring } = formData;
 
     const onSubmit = e => {
         e.preventDefault();
         addSeminar(formData);
         setFormData({
-            name: '',
             photoURL:'',
             location:'',
             project:'',
             details:'',
             difficulty:'',
-            dateOfEvent: ''
+            time:'',
+            dateOfEvent: '',
+            recurring: false
         });
     }
 
@@ -96,13 +98,13 @@ const AddSeminar = ({ addSeminar }) => {
                     <p className="form-text">
                         <strong>Difficulty : *</strong>
                     </p>
-                </div>
                 <select name="difficulty" value={difficulty} onChange={e => onChange(e)}>
                     <option value="0">Select Difficulty</option>
-                    <option value="Hard">Hard</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Easy">Easy</option>
+                    <option value="Hard">Beginner</option>
+                    <option value="Medium">Alternate</option>
+                    <option value="Easy">Advanced</option>
                 </select>
+                </div>
                 <div className="form-group">
                     <p className="form-text">
                         <strong>Date of Seminar : </strong>
@@ -113,6 +115,30 @@ const AddSeminar = ({ addSeminar }) => {
                         value={dateOfEvent}
                         onChange={e => onChange(e)}
                     />
+                </div>
+                <div className="form-group">
+                    <p className="form-text">
+                        <strong>Time of Seminar : </strong>
+                    </p>
+                    <input 
+                        type="text"
+                        placeholder="HH:MM AM"
+                        name="time"
+                        value={time}
+                        onChange={e => onChange(e)}
+                    />
+                </div>
+                <div class="form-group">
+                <p><input 
+                    type="checkbox" 
+                    name="recurring" 
+                    checked={recurring}
+                    value={recurring} 
+                    onChange={e => {
+                        setFormData({...formData, recurring: !recurring});
+                        }
+                    }
+                    /> {' '}Recurring</p>
                 </div>
                 <input type="Submit" className="btn btn-primary my-2"/>
             </form>
