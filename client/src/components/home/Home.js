@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
-import WatercolorTab from './watercolor/WatercolorTab';
-import PencilTab from './pencil/PencilTab';
-import OilTab from './oil/OilTab';
+import Watercolor from './artwork_pages/Watercolor';
+import Pencil from './artwork_pages/Pencil';
+import Oil from './artwork_pages/Oil';
 import Seminartab from './seminars/SeminarTab';
 import ContactTab from './contact/ContactTab';
 import AboutTab from './about/AboutTab';
@@ -63,11 +63,11 @@ const Home = props => {
                 <div className="main-inner m-4">
                 {
                     selectedTab === 'watercolor' ? (
-                        <WatercolorTab />
+                        <Watercolor />
                     ) : selectedTab === 'pencil' ? (
-                        <PencilTab />
+                        <Pencil />
                     ) : selectedTab === 'oil' ? (
-                        <OilTab />
+                        <Oil/>
                     ) : selectedTab === 'seminars' ? (
                         <Seminartab />
                     ) : selectedTab === 'about' ? (

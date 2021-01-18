@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { getArtworksWatercolor } from './../../../actions/artwork'
+import { getArtworksPencil } from '../../../actions/artwork'
 import { Link } from 'react-router-dom';
 
 import Spinner from '../../layout/Spinner'
 
-const WatercolorTab = ({ getArtworksWatercolor, artwork: {loading, artworks} }) => {
+const Pencil = ({ getArtworksPencil, artwork: {loading, artworks} }) => {
 
     useEffect(() => { 
-        getArtworksWatercolor(); 
-    }, [getArtworksWatercolor]);
+        getArtworksPencil();
+    }, [getArtworksPencil]);
 
     const colSize = Math.floor(artworks.length / 4);
     const colRem = artworks.length % 4;
@@ -18,7 +18,7 @@ const WatercolorTab = ({ getArtworksWatercolor, artwork: {loading, artworks} }) 
     return (
         <div className="grid m-2">
             {loading || artworks === null ? <Spinner /> : (
-                artworks.length === 0 ? (<p>There are no artworks of medium "watercolor" yet</p>) : (
+                artworks.length === 0 ? (<p className="centered p-1"><strong>There are no artworks of medium "pencil" yet</strong></p>) : (
                     <ul className="row">
                         <div className="column">
                             {
@@ -45,7 +45,7 @@ const WatercolorTab = ({ getArtworksWatercolor, artwork: {loading, artworks} }) 
                             }
                             {
                                 colRem > 1 && 
-                                <Link to={`/view-artwork/${artworks[colSize * 4]._id}`}>
+                                <Link to={`/view-artwork/${artworks[colSize * 4 + 1]._id}`}>
                                     <img src={artworks[colSize * 4 + 1].photoURL} width="100%"></img>
                                 </Link>
                             }
@@ -60,7 +60,7 @@ const WatercolorTab = ({ getArtworksWatercolor, artwork: {loading, artworks} }) 
                             }
                             {
                                 colRem > 2 && 
-                                <Link to={`/view-artwork/${artworks[colSize * 4]._id}`}>
+                                <Link to={`/view-artwork/${artworks[colSize * 4 + 2]._id}`}>
                                     <img src={artworks[colSize * 4 + 2].photoURL} width="100%"></img>
                                 </Link>
                             }
@@ -81,8 +81,8 @@ const WatercolorTab = ({ getArtworksWatercolor, artwork: {loading, artworks} }) 
     )
 }
 
-WatercolorTab.propTypes = {
-    getArtworksWatercolor : PropTypes.func.isRequired,
+Pencil.propTypes = {
+    getArtworksPencil : PropTypes.func.isRequired,
     artwork: PropTypes.object.isRequired
 }
 
@@ -90,4 +90,4 @@ const mapStateToProps = state => ({
     artwork: state.artwork
 });
 
-export default connect(mapStateToProps, { getArtworksWatercolor })(WatercolorTab)
+export default connect(mapStateToProps, { getArtworksPencil })(Pencil)

@@ -22,7 +22,11 @@ const SeminarSchema = new mongoose.Schema({
     difficulty: {
         type: String,
     },
-    time: {
+    startTime: {
+        type: String,
+        required: true
+    },
+    endTime: {
         type: String,
         required: true
     },

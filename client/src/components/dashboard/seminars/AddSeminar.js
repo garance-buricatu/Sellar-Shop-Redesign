@@ -18,12 +18,13 @@ const AddSeminar = ({ addSeminar }) => {
         project:'',
         details:'',
         difficulty:'',
-        time:'',
+        startTime:'',
+        endTimeTime:'',
         dateOfEvent: '',
         recurring: false
     });
 
-    const { photoURL, location, project, details, difficulty, time, dateOfEvent, recurring } = formData;
+    const { photoURL, location, project, details, difficulty, startTime, endTime, dateOfEvent, recurring } = formData;
 
     const onSubmit = e => {
         e.preventDefault();
@@ -34,7 +35,8 @@ const AddSeminar = ({ addSeminar }) => {
             project:'',
             details:'',
             difficulty:'',
-            time:'',
+            startTime:'',
+            endTime:'',
             dateOfEvent: '',
             recurring: false
         });
@@ -118,13 +120,25 @@ const AddSeminar = ({ addSeminar }) => {
                 </div>
                 <div className="form-group">
                     <p className="form-text">
-                        <strong>Time of Seminar : </strong>
+                        <strong>Start time : </strong>
                     </p>
                     <input 
                         type="text"
                         placeholder="HH:MM AM"
-                        name="time"
-                        value={time}
+                        name="startTime"
+                        value={startTime}
+                        onChange={e => onChange(e)}
+                    />
+                </div>
+                <div className="form-group">
+                    <p className="form-text">
+                        <strong>End time : </strong>
+                    </p>
+                    <input 
+                        type="text"
+                        placeholder="HH:MM AM"
+                        name="endTime"
+                        value={endTime}
                         onChange={e => onChange(e)}
                     />
                 </div>

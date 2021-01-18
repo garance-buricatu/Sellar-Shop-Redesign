@@ -38,8 +38,12 @@ export const SeminarEvent = ({ sem, setToggle, toggle, deleteSeminar }) => {
                         {sem.details === null ? 'N/A' : sem.details}
                     </li>
                     <li>
-                        <p className="form-text seminar-text"><strong>Time: </strong></p>
-                        {sem.time === null ? 'N/A' : sem.time}
+                        <p className="form-text seminar-text"><strong>Start Time: </strong></p>
+                        {sem.startTime === null ? 'N/A' : sem.startTime}
+                    </li>
+                    <li>
+                        <p className="form-text seminar-text"><strong>End Time: </strong></p>
+                        {sem.endTime === null ? 'N/A' : sem.endTime}
                     </li>
                     {sem.recurring === null || sem.recurring === false ? '' : <li><p className="form-text seminar-text"><strong>Recurring</strong></p></li>}
                 </ul>

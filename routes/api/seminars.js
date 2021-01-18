@@ -17,7 +17,8 @@ router.post(
             [
                 check('project', 'Project of seminar is required').not().isEmpty(),
                 check('details', 'Details of seminar are required').not().isEmpty(),
-                check('time', 'Time of seminar is required').not().isEmpty(),
+                check('startTime', 'Start time of seminar is required').not().isEmpty(),
+                check('endTime', 'End time of seminar is required').not().isEmpty(),
                 check('dateOfEvent', 'Date of seminar is required').not().isEmpty()
             ]
     ],
@@ -34,7 +35,8 @@ router.post(
             project,
             details,
             difficulty,
-            time,
+            startTime,
+            endTime,
             dateOfEvent,
             recurring
         } = req.body;
@@ -48,7 +50,8 @@ router.post(
         if (project) seminarFields.project = project;
         if (details) seminarFields.details = details;
         if (difficulty) seminarFields.difficulty = difficulty;
-        if (time) seminarFields.time = time;
+        if (startTime) seminarFields.startTime = startTime;
+        if (endTime) seminarFields.endTime = endTime;
         if (dateOfEvent) seminarFields.dateOfEvent = dateOfEvent;
         if (recurring) seminarFields.recurring = recurring;
 

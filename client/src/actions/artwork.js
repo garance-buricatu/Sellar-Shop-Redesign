@@ -196,3 +196,18 @@ export const deleteArtwork = id => async dispatch => {
     }
     
 };
+
+// clear artwork
+export const clearArtwork = () => async dispatch => {
+    try {
+        dispatch({
+            type: CLEAR_ARTWORK
+        })
+    } catch (err) {
+        dispatch({
+            type: ARTWORK_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
+    }
+    
+};

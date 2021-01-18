@@ -212,7 +212,8 @@ ul {
 
 .home {
   display: grid;
-  grid-template-columns: minmax(300px, 20%) 1fr;
+  grid-template-columns: minmax(300px, 15%) 1fr;
+  height: 100vh;
 
   .sidebar {
     background-color: $primary-color;
@@ -260,6 +261,6 @@ ul {
   align-items: center;
 
   img {
-    width: 50%;
+    width: 30%;
   }
 }
