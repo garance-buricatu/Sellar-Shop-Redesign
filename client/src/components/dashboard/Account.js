@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { setPassword } from '../../actions/users'; 
-import { setAlert } from '../../actions/alert';
 
 const Account = ({ setPassword }) => {
     const [formData, setFormData] = useState({

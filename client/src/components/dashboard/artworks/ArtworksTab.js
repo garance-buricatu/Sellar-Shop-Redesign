@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { getArtworks, deleteArtwork } from '../../../actions/artwork'
-import Moment from 'react-moment'
-
 
 import Spinner from '../../layout/Spinner'
 import AddArtwork from '../artworks/AddArtwork';
@@ -23,6 +21,7 @@ const ArtworksTab = ({ getArtworks, deleteArtwork, artwork: { artworks, loading 
                     src={art.photoURL}
                     width="80%"
                     height="auto"
+                    alt={`artwork id:${art._id}`}
                 />
             </div></td>
             <td><div>{art.title}</div></td>

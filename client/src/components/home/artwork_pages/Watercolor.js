@@ -24,14 +24,14 @@ const Watercolor = ({ getArtworksWatercolor, artwork: {loading, artworks} }) => 
                             {
                                 artworks.slice(0, colSize).map(art => (
                                     <Link to={`/view-artwork/${art._id}`}>
-                                        <img src={art.photoURL} width="100%"></img>
+                                        <img src={art.photoURL} width="100%" alt={`id: ${art._id}`}></img>
                                     </Link>
                                 ))
                             }
                             {
                                 colRem > 0 && 
                                 <Link to={`/view-artwork/${artworks[colSize * 4]._id}`}>
-                                    <img src={artworks[colSize * 4].photoURL} width="100%"></img>
+                                    <img src={artworks[colSize * 4].photoURL} width="100%" alt={`id: ${artworks[colSize * 4]._id}`}></img>
                                 </Link>
                             }
                         </div>
@@ -39,14 +39,14 @@ const Watercolor = ({ getArtworksWatercolor, artwork: {loading, artworks} }) => 
                             {
                                 artworks.slice(colSize, colSize * 2).map(art => (
                                     <Link to={`/view-artwork/${art._id}`}>
-                                        <img src={art.photoURL} width="100%"></img>
+                                        <img src={art.photoURL} width="100%" alt={`id: ${art._id}`}></img>
                                     </Link>
                                 ))
                             }
                             {
                                 colRem > 1 && 
                                 <Link to={`/view-artwork/${artworks[colSize * 4 + 1]._id}`}>
-                                    <img src={artworks[colSize * 4 + 1].photoURL} width="100%"></img>
+                                    <img src={artworks[colSize * 4 + 1].photoURL} width="100%" alt={`id: ${artworks[colSize * 4 + 1]._id}`}></img>
                                 </Link>
                             }
                         </div>
@@ -54,14 +54,14 @@ const Watercolor = ({ getArtworksWatercolor, artwork: {loading, artworks} }) => 
                             {
                                 artworks.slice(colSize * 2, colSize * 3).map(art => (
                                     <Link to={`/view-artwork/${art._id}`}>
-                                        <img src={art.photoURL} width="100%"></img>
+                                        <img src={art.photoURL} width="100%" alt={`id: ${art._id}`}></img>
                                     </Link>
                                 ))
                             }
                             {
                                 colRem > 2 && 
                                 <Link to={`/view-artwork/${artworks[colSize * 4 + 2]._id}`}>
-                                    <img src={artworks[colSize * 4 + 2].photoURL} width="100%"></img>
+                                    <img src={artworks[colSize * 4 + 2].photoURL} width="100%" alt={`id: ${artworks[colSize * 4 + 2]._id}`}></img>
                                 </Link>
                             }
                         </div>
@@ -69,7 +69,7 @@ const Watercolor = ({ getArtworksWatercolor, artwork: {loading, artworks} }) => 
                             {
                                 artworks.slice(colSize * 3, colSize * 4).map(art => (
                                     <Link to={`/view-artwork/${art._id}`}>
-                                        <img src={art.photoURL} width="100%"></img>
+                                        <img src={art.photoURL} width="100%" alt={`id: ${art._id}`}></img>
                                     </Link>
                                 ))
                             }

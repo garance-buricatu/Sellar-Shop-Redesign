@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
 
 import Watercolor from './artwork_pages/Watercolor';
 import Pencil from './artwork_pages/Pencil';
@@ -82,10 +81,6 @@ const Home = props => {
             </div>
         </div>
     )
-}
-
-Home.propTypes = {
-
 }
 
 export default Home

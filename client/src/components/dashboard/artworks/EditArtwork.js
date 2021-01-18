@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getArtwork, editArtwork } from '../../../actions/artwork'
 
-import { Link, withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import Spinner from '../../layout/Spinner'
 
@@ -37,7 +37,7 @@ const EditArtwork = ({ getArtwork, editArtwork, artwork: {artwork, loading}, mat
             medium: loading || artwork === null ? '': artwork.medium,
             date: loading || artwork === null ? '': artwork.date
         });
-    }, [artwork]);
+    }, [artwork, loading]);
 
     return (
         <div className="edit-artwork">
@@ -45,6 +45,7 @@ const EditArtwork = ({ getArtwork, editArtwork, artwork: {artwork, loading}, mat
             {artwork === null || loading ? <Spinner /> : (
                 <img
                 src={photoURL}
+                alt={`artwork with id: ${artwork._id}`}
                 />
             )} 
             <div className="edit-artwork-inner m-2">

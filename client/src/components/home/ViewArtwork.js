@@ -20,6 +20,7 @@ const ViewArtwork = ({ getArtwork, clearArtwork, artwork : {artwork, loading}, m
                     <img
                         src={artwork.photoURL}
                         className="m-1"
+                        alt={`artwork with id: ${artwork._id}`}
                     />
                     <p className="lead">{artwork.title}</p>
                     <p>{artwork.user.name}</p>

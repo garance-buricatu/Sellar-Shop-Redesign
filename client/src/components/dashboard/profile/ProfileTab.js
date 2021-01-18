@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getBonnieProfile } from '../../../actions/profile';
 import { createProfile } from '../../../actions/profile';
 
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Editor } from '@tinymce/tinymce-react'
 
 import Spinner from '../../layout/Spinner'
@@ -21,7 +21,7 @@ const ProfileTab = ({ getBonnieProfile, createProfile, profile: { profile, loadi
             avatar: loading || !profile.avatar ? '' : profile.avatar,
             description: loading || !profile.description ? '' : profile.description
         });
-    }, [profile]);
+    }, [profile, loading]);
     
     const [formData, setFormData] = useState({
         avatar: '',
@@ -72,6 +72,7 @@ const ProfileTab = ({ getBonnieProfile, createProfile, profile: { profile, loadi
                             <img
                                 src={avatar}
                                 className="my-1"
+                                alt="Bonnie's Profile"
                             />
                         </div>
                         <div className="form-group">
@@ -90,9 +91,7 @@ const ProfileTab = ({ getBonnieProfile, createProfile, profile: { profile, loadi
                                     'insertdatetime media table paste code help wordcount'
                                 ],
                                 toolbar:
-                                    'undo redo | formatselect | bold italic backcolor | \
-                                    alignleft aligncenter alignright alignjustify | \
-                                    bullist numlist outdent indent | removeformat | help'
+                                    'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help'
                                 }}
             
                                 onEditorChange={handleEditorChange}

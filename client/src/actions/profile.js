@@ -70,8 +70,8 @@ export const addAwards = (formData) => async dispatch => {
             payload: res.data // profile
         });
 
-        dispatch(setAlert('Award Added', 'success'));        
-
+        dispatch(setAlert('Award Added', 'success')); 
+        
     } catch (err) {
         console.log(err);
         const errors = err.response.data.errors;
@@ -89,19 +89,21 @@ export const addAwards = (formData) => async dispatch => {
 
 // Delete Award
 export const deleteAward = id => async dispatch => {
-    try {
-        const res = await axios.delete(`/api/profiles/awards/${id}`);
+    if (window.confirm('Are you sure? This cannot be undone!')){
+        try {
+            const res = await axios.delete(`/api/profiles/awards/${id}`);
 
-        dispatch({
-            type: UPDATE_PROFILE,
-            payload: res.data //profile
-        })
+            dispatch({
+                type: UPDATE_PROFILE,
+                payload: res.data //profile
+            })
 
-        dispatch(setAlert('Award Deleted', 'success'));
-    } catch (err) {
-        dispatch({
-            type: PROFILE_ERROR,
-            payload: { msg: err.response.statusText, status: err.response.status }
-        });
+            dispatch(setAlert('Award Deleted', 'success'));
+        } catch (err) {
+            dispatch({
+                type: PROFILE_ERROR,
+                payload: { msg: err.response.statusText, status: err.response.status }
+            });
+        }
     }
 };

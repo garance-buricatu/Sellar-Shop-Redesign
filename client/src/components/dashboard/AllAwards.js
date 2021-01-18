@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { deleteAward } from '../../actions/profile'
@@ -9,12 +9,7 @@ const AllAwards = ({ awards, deleteAward }) => {
         <tr key={award._id}>
             <td><div>{award.title}</div></td>
             <td><div>{award.description}</div></td>
-            <td><div>
-                {award.date === null ? 
-                (<p>N/A</p>) : (
-                    <Moment format='YYYY/MM/DD'>{award.date}</Moment>
-                )}
-                </div></td>
+            <td><div>{award.date}</div></td>
             <td className="actions">
                 <div>
                 <button 

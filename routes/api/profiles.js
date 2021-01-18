@@ -87,7 +87,8 @@ router.put(
     [auth,
         [
             check('title', 'Title is required').not().isEmpty(),
-            check('description', 'Description is required').not().isEmpty()
+            check('description', 'Description is required').not().isEmpty(),
+            check('date', 'Date is required').not().isEmpty()
         ]
     ],
     async (req, res) => {

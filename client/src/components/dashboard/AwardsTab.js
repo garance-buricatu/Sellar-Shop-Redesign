@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 import { addAwards } from '../../actions/profile'
 import { getBonnieProfile } from '../../actions/profile'
 
-import { Link, withRouter } from 'react-router-dom'
 import AllAwards from './AllAwards'
 import Spinner from '../layout/Spinner'
 
@@ -62,11 +61,11 @@ const Awards = ({ addAwards, getBonnieProfile, profile: { profile, loading }, hi
                 </div>
                 <div className="form-group">
                     <p className="form-text">
-                        <strong>Date : </strong>
+                        <strong>Date (Year): </strong>
                     </p>
                     <input 
-                        type="date"
-                        placeholder="Date of Award"
+                        type="text"
+                        placeholder="YYYY"
                         name="date"
                         value={date}
                         onChange={e => onChange(e)}
