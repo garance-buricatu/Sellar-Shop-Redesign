@@ -18,8 +18,8 @@ const ProfileTab = ({ getBonnieProfile, createProfile, profile: { profile, loadi
 
     useEffect(() => {
         setFormData({
-            avatar: loading || !profile.avatar ? '' : profile.avatar,
-            description: loading || !profile.description ? '' : profile.description
+            avatar: loading || profile === null || !profile.avatar ? '' : profile.avatar,
+            description: loading || profile === null || !profile.description ? '' : profile.description
         });
     }, [profile, loading]);
     
@@ -86,9 +86,9 @@ const ProfileTab = ({ getBonnieProfile, createProfile, profile: { profile, loadi
                                 height: 250,
                                 menubar: false,
                                 plugins: [
-                                    'advlist autolink lists link image charmap print preview anchor',
-                                    'searchreplace visualblocks code fullscreen',
-                                    'insertdatetime media table paste code help wordcount'
+                                    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+                                    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                                    "save table contextmenu directionality emoticons template textcolor paste textcolor colorpicker"
                                 ],
                                 toolbar:
                                     'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help'

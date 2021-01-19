@@ -21,18 +21,16 @@ const AboutTab = ({ getBonnieProfile, profile : { profile, loading } }) => {
                             src={profile.avatar}
                             alt="Bonnie's Profile"
                         />
-                        <div className="p-2">
-                            {profile.description}
-                        </div>
+                        <div className="p-2" dangerouslySetInnerHTML={{ __html: profile.description }} />
                     </div>
                     <h3 className="m-1">Awards and Honors</h3>
-                    <table className="table">
+                    <table className="table-2">
                         <tbody>
                             {profile.awards.map(award => (
                                 <tr key={award.id}>
-                                    <td><div>{award.date}</div></td>
-                                    <td><div>{award.title}</div></td>
-                                    <td><div>{award.description}</div></td>
+                                    <td className="date"><strong>{award.date}</strong></td>
+                                    <td>{award.title}</td>
+                                    <td>{award.description}</td>
                                 </tr>
                             ))}
                         </tbody>

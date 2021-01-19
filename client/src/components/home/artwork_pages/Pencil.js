@@ -16,7 +16,7 @@ const Pencil = ({ getArtworksPencil, artwork: {loading, artworks} }) => {
     const colRem = artworks.length % 4;
     
     return (
-        <div className="grid m-2">
+        <div className="grid p-2">
             {loading || artworks === null ? <Spinner /> : (
                 artworks.length === 0 ? (<p className="centered p-1"><strong>There are no artworks of medium "pencil" yet</strong></p>) : (
                     <ul className="row">

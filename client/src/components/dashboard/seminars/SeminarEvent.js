@@ -12,51 +12,50 @@ export const SeminarEvent = ({ sem, setToggle, toggle, deleteSeminar }) => {
 
     return (
         <div className="display-seminar m-1">
-            <div className="display-seminar-inner p-1">
-            <img
-                src={sem.photoURL}
-                height="150px"
-                width="auto"
-                className="display-seminar-inner-img"
-                alt={`seminar with id: ${sem._id}`}
-            />
-            <div className="display-seminar-inner-details mx-1">
-                <ul>
-                    <li>
-                        <p className="form-text seminar-text"><strong>Project Name: </strong></p>
-                        {sem.project === null ? 'N/A' : sem.project}
-                    </li>
-                    <li>
-                        <p className="form-text seminar-text"><strong>Location: </strong></p>
-                        {sem.location === null ? 'N/A' : sem.location}
-                    </li>
-                    <li>
-                        <p className="form-text seminar-text"><strong>Difficulty: </strong></p>
-                        {sem.difficulty === null ? 'N/A' : sem.difficulty} 
-                    </li>
-                    <li>
-                        <p className="form-text seminar-text"><strong>Details: </strong></p>
-                        {sem.details === null ? 'N/A' : sem.details}
-                    </li>
-                    <li>
-                        <p className="form-text seminar-text"><strong>Start Time: </strong></p>
-                        {sem.startTime === null ? 'N/A' : sem.startTime}
-                    </li>
-                    <li>
-                        <p className="form-text seminar-text"><strong>End Time: </strong></p>
-                        {sem.endTime === null ? 'N/A' : sem.endTime}
-                    </li>
-                    {sem.recurring === null || sem.recurring === false ? '' : <li><p className="form-text seminar-text"><strong>Recurring</strong></p></li>}
-                </ul>
+            <div className="display-seminar-inner">
+                <img
+                    src={sem.photoURL}
+                    height="150px"
+                    width="auto"
+                    className="display-seminar-inner-img"
+                    alt={`seminar with id: ${sem._id}`}
+                />
+                <div className="display-seminar-inner-details mx-1">
+                    <ul>
+                        <li>
+                            <p className="form-text seminar-text"><strong>Project Name: </strong></p>
+                            {sem.project === null ? 'N/A' : sem.project}
+                        </li>
+                        <li>
+                            <p className="form-text seminar-text"><strong>Location: </strong></p>
+                            {sem.location === null ? 'N/A' : sem.location}
+                        </li>
+                        <li>
+                            <p className="form-text seminar-text"><strong>Difficulty: </strong></p>
+                            {sem.difficulty === null ? 'N/A' : sem.difficulty} 
+                        </li>
+                        <li>
+                            <p className="form-text seminar-text"><strong>Details: </strong></p>
+                            {sem.details === null ? 'N/A' : sem.details}
+                        </li>
+                        <li>
+                            <p className="form-text seminar-text"><strong>Start Time: </strong></p>
+                            {sem.startTime === null ? 'N/A' : sem.startTime}
+                        </li>
+                        <li>
+                            <p className="form-text seminar-text"><strong>End Time: </strong></p>
+                            {sem.endTime === null ? 'N/A' : sem.endTime}
+                        </li>
+                        {sem.recurring === null || sem.recurring === false ? '' : <li><p className="form-text seminar-text"><strong>Recurring</strong></p></li>}
+                    </ul>
+                </div>
             </div>
             <button 
                 className="btn btn-danger mx-2"
                 onClick={onClick}
             >
                 X
-            </button>
-            </div>
-            
+            </button>            
         </div>
     )
 }

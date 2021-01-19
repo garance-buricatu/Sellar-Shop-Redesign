@@ -42,7 +42,7 @@ ul {
 }
 
 .navbar {
-  background: url("../components/layout/banner.png") no-repeat center
+  background: url("../components/layout/ElmParkbanner.jpg") no-repeat center
     center/cover;
   z-index: 1;
   width: 100%;
@@ -134,20 +134,21 @@ ul {
 
           .display-seminar {
             display: flex;
-            justify-content: center;
+            align-items: center;
+            justify-content: space-between;
+            background-color: $primary-color;
+            border-radius: 10px;
+            opacity: 0.8;
+            transition: 0.3s;
+            padding: 1rem;
+
+            &:hover {
+              background-color: $hover-color;
+              opacity: 1;
+            }
 
             &-inner {
               display: flex;
-              align-items: center;
-              background-color: $primary-color;
-              border-radius: 10px;
-              opacity: 0.8;
-              transition: 0.3s;
-
-              &:hover {
-                background-color: $hover-color;
-                opacity: 1;
-              }
 
               &-img {
                 padding: 0.25rem;
@@ -173,7 +174,8 @@ ul {
         }
 
         .purpleDay:not(.-selectedStart):not(.-selectedBetween):not(.-selectedEnd):not(.-selected) {
-          border: 3px solid rgba(156, 136, 255, 0.7) !important;
+          border: 3px solid $button-color !important;
+          border-radius: 0px;
 
           &:hover {
             background-color: $select-primary-color;
@@ -191,6 +193,10 @@ ul {
 
           .Calendar__weekDays {
             color: $dark-color;
+          }
+
+          .Calendar__day.-ltr {
+            border-radius: 0px;
           }
         }
       }

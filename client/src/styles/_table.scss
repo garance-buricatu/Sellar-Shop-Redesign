@@ -24,3 +24,16 @@
     }
   }
 }
+
+.table-2 {
+  width: 100%;
+  table-layout: fixed;
+
+  .date {
+    width: 6%;
+  }
+  td {
+    padding: 0.5rem;
+    //border-bottom: 2px solid $hover-color;
+  }
+}
