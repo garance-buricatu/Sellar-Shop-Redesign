@@ -27,6 +27,8 @@ const ArtworksTab = ({ getArtworks, deleteArtwork, artwork: { artworks, loading 
             <td><div>{art.title}</div></td>
             <td><div>{art.size}</div></td>
             <td><div>{art.medium}</div></td>
+            <td><div>{art.price}</div></td>
+            <td><div>{art.latest === true ? "YES" : "NO"}</div></td>
             <td><div>
                 {art.date}
             </div></td>
@@ -72,6 +74,8 @@ const ArtworksTab = ({ getArtworks, deleteArtwork, artwork: { artworks, loading 
                                     <th>Title</th>
                                     <th>Dimensions (in inches)</th>
                                     <th>Medium</th>
+                                    <th>Price</th>
+                                    <th>Add to Latest</th>
                                     <th>Year Created</th>
                                     <th></th>
                                 </tr>

@@ -21,6 +21,25 @@ export const getArtworks = () => async dispatch => {
     }
 }; 
 
+// get all artworks (LATEST)
+export const getArtworksLatest = () => async dispatch => {
+    try {
+        const res = await axios.get('/api/artworks/latest'); // using token currently stored in local storage
+        
+        dispatch({
+            type: GET_ARTWORKS,
+            payload: res.data // array of all artworks (watercolor)
+        });
+
+    } catch (err) {
+
+        dispatch({
+            type: ARTWORK_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
+    }
+}; 
+
 // get all artworks (WATERCOLOR)
 export const getArtworksWatercolor = () => async dispatch => {
     try {
@@ -33,10 +52,10 @@ export const getArtworksWatercolor = () => async dispatch => {
 
     } catch (err) {
 
-        // dispatch({
-        //     type: ARTWORK_ERROR,
-        //     payload: { msg: err.response.statusText, status: err.response.status }
-        // });
+        dispatch({
+            type: ARTWORK_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
     }
 }; 
 

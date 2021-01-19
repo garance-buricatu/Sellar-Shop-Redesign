@@ -19,6 +19,7 @@ router.post(
             check('size', 'Size is required').not().isEmpty(),
             check('medium', 'Medium is required').not().isEmpty(),
             check('photoURL', 'Photo URL is required').not().isEmpty(),
+            check('price', 'Price is required').not().isEmpty(),
             check('date', 'Year created is required').not().isEmpty()
         ]
     ], 
@@ -34,6 +35,8 @@ router.post(
             photoURL,
             size,
             medium,
+            price,
+            latest,
             date
         } = req.body;
 
@@ -45,6 +48,8 @@ router.post(
         if (photoURL) artworkFields.photoURL = photoURL;
         if (size) artworkFields.size = size;
         if (medium) artworkFields.medium = medium;
+        if (price) artworkFields.price = price;
+        if (latest) artworkFields.latest = latest;
         if (date) artworkFields.date = date;
 
         try {
@@ -73,6 +78,8 @@ router.put('/:artwork_id', auth, async (req, res) => {
             photoURL,
             size,
             medium,
+            price,
+            latest,
             date
         } = req.body;
 
@@ -84,6 +91,8 @@ router.put('/:artwork_id', auth, async (req, res) => {
         if (photoURL) artworkFields.photoURL = photoURL;
         if (size) artworkFields.size = size;
         if (medium) artworkFields.medium = medium;
+        if (price) artworkFields.price = price;
+        if (latest) artworkFields.latest = latest;
         if (date) artworkFields.date = date;
 
         try {
@@ -124,7 +133,23 @@ router.get('/', async (req, res) => {
     }
 });
 
-// @route   GET api/artworks
+// @route   GET api/artworks/latest
+// @desc    Get all artworks (LATEST)
+// @access  Public
+
+router.get('/latest', async (req, res) => {
+    try {
+
+        const artworks = await Artwork.find({'latest' : true }).populate('user', ['name']);
+        res.json(artworks);
+        
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+// @route   GET api/artworks/watercolor
 // @desc    Get all artworks (WATERCOLOR)
 // @access  Public
 
@@ -140,7 +165,7 @@ router.get('/watercolor', async (req, res) => {
     }
 });
 
-// @route   GET api/artworks
+// @route   GET api/artworks/oil
 // @desc    Get all artworks (OIL)
 // @access  Public
 
@@ -156,7 +181,7 @@ router.get('/oil', async (req, res) => {
     }
 });
 
-// @route   GET api/artworks
+// @route   GET api/artworks/pencil
 // @desc    Get all artworks (PENCIL)
 // @access  Public
 

@@ -6,10 +6,11 @@ import Oil from './artwork_pages/Oil';
 import Seminartab from './seminars/SeminarTab';
 import ContactTab from './contact/ContactTab';
 import AboutTab from './about/AboutTab';
+import Latest from './Latest';
 
 const Home = props => {
 
-    const [selectedTab, setSelectedTab] = useState('watercolor');
+    const [selectedTab, setSelectedTab] = useState('latest');
 
     return (
         <div className="home">
@@ -61,7 +62,9 @@ const Home = props => {
             <div className="main">
                 <div className="main-inner m-4">
                 {
-                    selectedTab === 'watercolor' ? (
+                    selectedTab === 'latest' ? (
+                        <Latest />
+                    ) : selectedTab === 'watercolor' ? (
                         <Watercolor />
                     ) : selectedTab === 'pencil' ? (
                         <Pencil />

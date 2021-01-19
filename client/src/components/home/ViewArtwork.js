@@ -27,6 +27,7 @@ const ViewArtwork = ({ getArtwork, clearArtwork, artwork : {artwork, loading}, m
                     <p>{artwork.date}</p>
                     <p>{artwork.size}</p>
                     <p>{artwork.medium}</p>
+                    <p>{artwork.price}</p>
                     <Link to="/" className="btn btn-primary my-1" onClick={() => clearArtwork()}>
                         Back
                     </Link>

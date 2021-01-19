@@ -9,21 +9,26 @@ const AddArtwork = ({ addArtwork }) => {
         photoURL:'',
         size:'',
         medium: '',
+        price:'',
+        latest:false,
         date:''
     });
 
-    const { title, photoURL, size, medium, date } = formData;
+    const { title, photoURL, size, medium, price, latest, date } = formData;
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const onSubmit = e => {
         e.preventDefault();
+        console.log(latest);
         addArtwork(formData);
         setFormData({
             title:'',
             photoURL:'',
             size:'',
             medium: '',
+            price:'',
+            latest:'',
             date:''
         });
     }
@@ -80,6 +85,26 @@ const AddArtwork = ({ addArtwork }) => {
                         <option value="Watercolor">Watercolor</option>
                         <option value="Pencil">Pencil</option>
                         <option value="Oil">Oil</option>
+                    </select>
+                </div>
+                <div className="form-group">
+                    <p className="form-text">
+                        <strong>Add to "latest artworks" page : </strong>
+                    </p>
+                    <select name="latest" value={latest} onChange={e => onChange(e)}>
+                        <option value="0">Add to "latest artworks" page</option>
+                        <option value={true}>YES</option>
+                        <option value={false}>NO</option>
+                    </select>
+                </div>
+                <div className="form-group">
+                    <p className="form-text">
+                        <strong>Price : </strong>
+                    </p>
+                    <select name="price" value={price} onChange={e => onChange(e)}>
+                        <option value="0">Select Price Option</option>
+                        <option value="Not For Sale">Not for Sale</option>
+                        <option value="Contact the Artist">Contact the Artist</option>
                     </select>
                 </div>
                 <div className="form-group">
