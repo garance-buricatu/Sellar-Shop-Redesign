@@ -127,7 +127,7 @@ router.put(
 );
 
 // @route   DELETE api/profiles/awards/:awards_id
-// @desc    Delete project from profile
+// @desc    Delete award from profile
 // @access  Private
 
 router.delete('/awards/:award_id', auth, async (req, res) => {
@@ -138,6 +138,74 @@ router.delete('/awards/:award_id', auth, async (req, res) => {
         const removeIndex = profile.awards.map(item => item.id).indexOf(req.params.award_id);
 
         profile.awards.splice(removeIndex, 1);
+
+        await profile.save();
+
+        res.json(profile);
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+// @route   PUT api/profiles/videos
+// @desc    Add video to profile
+// @access  Private
+
+router.put(
+    '/videos',
+    [auth,
+        [
+            check('link', 'Link is required').not().isEmpty()
+        ]
+    ],
+    async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()){
+            return res.status(400).json({ errors: errors.array() });
+        }
+
+        const { link, description } = req.body;
+
+        const newVideo = {
+            link,
+            description
+        };
+
+        try {
+            const profile = await Profile.findOne({ user: req.user.id });
+
+            if (!profile){
+                res.status(400).json({'msg': 'Profile was not found'});
+            }
+
+            profile.videos.unshift(newVideo);
+
+            await profile.save();
+
+            res.json(profile);
+
+
+        } catch (err) {
+            console.error(err.message);
+            res.status(500).send('Server Error');
+        }
+    }
+);
+
+// @route   DELETE api/profiles/videos/:video_id
+// @desc    Delete video from profile
+// @access  Private
+
+router.delete('/videos/:video_id', auth, async (req, res) => {
+    try {
+        const profile = await Profile.findOne({ user: req.user.id });
+
+        // Get the remove index
+        const removeIndex = profile.videos.map(item => item.id).indexOf(req.params.video_id);
+
+        profile.videos.splice(removeIndex, 1);
 
         await profile.save();
 

@@ -94,6 +94,23 @@ router.get('/', async (req, res) => {
 // @desc    Get seminar by ID
 // @access  Public
 
+router.get('/:seminar_id', async (req, res) => {
+    try {
+
+        const seminar = await Artwork.findById(req.params.seminar_id);
+        
+        if (!seminar) return res.status(400).json({ msg: 'Seminar not found' });
+
+        res.json(seminar);
+        
+    } catch (err) {
+        if (err.kind == 'ObjectId'){
+            return res.status(400).json({ msg: 'Seminar not found' });
+        }
+        res.status(500).send('Server Error');
+    }
+});
+
 // @route   DELETE api/seminars/:seminar_id
 // @desc    Delete seminar by ID
 // @access  Private

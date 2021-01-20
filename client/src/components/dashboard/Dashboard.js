@@ -53,7 +53,7 @@ const Dashboard = ({ logout, auth: { loading, user } }) => {
                                     onClick={() => setSelectedTab('awards')}
                                 >
                                     <i class="fa fa-trophy" aria-hidden="true"></i>
-                                    <p className="text-menu">Edit Awards</p>
+                                    <p className="text-menu">Edit Awards and Videos</p>
                                 </div>
                             </div>
                             <div>

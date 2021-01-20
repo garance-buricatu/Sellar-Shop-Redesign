@@ -200,6 +200,17 @@ ul {
           }
         }
       }
+
+      .awards {
+        &-inner {
+          display: flex;
+          justify-content: space-evenly;
+
+          form {
+            width: 50%;
+          }
+        }
+      }
     }
   }
 }

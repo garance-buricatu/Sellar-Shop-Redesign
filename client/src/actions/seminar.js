@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ADD_SEMINAR, SEMINAR_ERROR, GET_SEMINARS, DELETE_SEMINAR } from './types'
+import { ADD_SEMINAR, SEMINAR_ERROR, GET_SEMINARS, DELETE_SEMINAR, CLEAR_SEMINAR } from './types'
 import { setAlert } from '../actions/alert'
 
 // get all seminars
@@ -79,4 +79,24 @@ export const deleteSeminar = id => async dispatch => {
         }
     }
     
+};
+
+// get seminar by id
+export const getSeminar = id => async dispatch => {
+    try {
+        const res = await axios.get(`/api/seminars/${id}`);
+
+        dispatch({type: CLEAR_SEMINAR });
+
+        dispatch({
+            type: GET_SEMINARS,
+            payload: res.data //artwork
+        })
+
+    } catch (err) {
+        dispatch({
+            type: SEMINAR_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
+    }
 };

@@ -22,4 +22,5 @@ export const ADD_SEMINAR = 'ADD_SEMINAR';
 export const GET_SEMINARS = 'GET_SEMINARS';
 export const SEMINAR_ERROR = 'SEMINAR_ERROR';
 export const DELETE_SEMINAR = 'DELETE_SEMINAR';
+export const CLEAR_SEMINAR = 'CLEAR_SEMINAR';
 

@@ -27,6 +27,17 @@ const ProfileSchema = new mongoose.Schema({
                 required: true
             }
         }
+    ],
+    videos : [
+        {
+            link : {
+                type: String,
+                required: true
+            },
+            description: {
+                type: String
+            }
+        }
     ]
 });
 

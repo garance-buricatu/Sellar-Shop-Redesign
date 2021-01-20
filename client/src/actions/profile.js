@@ -107,3 +107,57 @@ export const deleteAward = id => async dispatch => {
         }
     }
 };
+
+// Add Videos to profile
+export const addVideos = (formData) => async dispatch => {
+    try {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        const res = await axios.put('/api/profiles/videos', formData, config);
+
+        dispatch({
+            type: UPDATE_PROFILE,
+            payload: res.data // profile
+        });
+
+        dispatch(setAlert('Video Added', 'success')); 
+        
+    } catch (err) {
+        console.log(err);
+        const errors = err.response.data.errors;
+
+        if (errors) {
+            errors.forEach(error => dispatch(setAlert(error.msg, 'danger'))); // prints errors returned by endpoint
+        }
+
+        dispatch({
+            type: AWARD_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
+    }
+};
+
+// Delete Video
+export const deleteVideo = id => async dispatch => {
+    if (window.confirm('Are you sure? This cannot be undone!')){
+        try {
+            const res = await axios.delete(`/api/profiles/videos/${id}`);
+
+            dispatch({
+                type: UPDATE_PROFILE,
+                payload: res.data //profile
+            })
+
+            dispatch(setAlert('Video Deleted', 'success'));
+        } catch (err) {
+            dispatch({
+                type: PROFILE_ERROR,
+                payload: { msg: err.response.statusText, status: err.response.status }
+            });
+        }
+    }
+};
