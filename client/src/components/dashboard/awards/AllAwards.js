@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { deleteAward } from '../../actions/profile'
+import { deleteAward } from '../../../actions/profile'
 import Moment from 'react-moment'
 
 const AllAwards = ({ awards, deleteAward }) => {

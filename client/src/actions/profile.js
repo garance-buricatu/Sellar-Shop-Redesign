@@ -17,10 +17,10 @@ export const getBonnieProfile = () => async dispatch => {
             payload: res.data // bonnie's profile
         });
     } catch (err) {
-        dispatch({
-            type: PROFILE_ERROR,
-            payload: { msg: err.response.statusText, status: err.response.status }
-        });
+        // dispatch({
+        //     type: PROFILE_ERROR,
+        //     payload: { msg: err.response.statusText, status: err.response.status }
+        // });
     }
 }; 
 
