@@ -1,6 +1,6 @@
 .table {
-  width: 100%;
-  table-layout: fixed;
+  margin-left: auto;
+  margin-right: auto;
 
   th {
     background-color: $hover-color;
@@ -26,8 +26,8 @@
 }
 
 .table-2 {
-  width: 100%;
-  table-layout: fixed;
+  margin-left: auto;
+  margin-right: auto;
 
   .date {
     width: 6%;
@@ -35,5 +35,38 @@
   td {
     padding: 0.5rem;
     //border-bottom: 2px solid $hover-color;
+  }
+}
+
+@media (max-width: 800px) {
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    position: relative;
+    padding-left: 50%;
+
+    div {
+      justify-content: flex-start;
+    }
+
+    img {
+      max-height: 400px;
+      width: auto;
+    }
   }
 }

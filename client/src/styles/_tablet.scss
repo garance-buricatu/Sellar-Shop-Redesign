@@ -1,0 +1,61 @@
+@media (max-width: 1100px) {
+  .dashboard {
+    .main {
+      &-inner {
+        margin: 2rem;
+
+        .seminar {
+          .Calendar.-noFocusOutline.-ltr {
+            width: 100%;
+            padding: 0px;
+          }
+
+          .display-seminar {
+            flex-direction: column;
+
+            &-inner {
+              margin-bottom: 10px;
+              justify-content: center;
+              align-items: center;
+            }
+
+            button {
+              margin: 0px;
+            }
+          }
+        }
+
+        .awards {
+          &-inner {
+            flex-direction: column;
+
+            form {
+              width: 85%;
+            }
+          }
+
+          .all-videos {
+            display: flex;
+            flex-direction: column;
+
+            .video {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .main {
+    &-inner {
+      margin: 2rem;
+    }
+  }
+
+  .view-artwork {
+    img {
+      width: 50%;
+    }
+  }
+}

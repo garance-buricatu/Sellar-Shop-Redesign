@@ -12,6 +12,27 @@
     flex: 25%;
     max-width: 25%;
     padding: 0 4px;
+
+    &-inner {
+      border-radius: 10px;
+      background-color: $hover-color;
+      margin: 0.5rem;
+      opacity: 1;
+
+      img {
+        border: 1px solid $dark-color;
+      }
+
+      &:hover {
+        opacity: 0.85;
+      }
+    }
+
+    &-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
   .column img {
@@ -40,6 +61,18 @@
       -ms-flex: 100%;
       flex: 100%;
       max-width: 100%;
+    }
+  }
+}
+
+@media (max-width: 1250px) {
+  .column {
+    &-buttons {
+      flex-direction: column;
+
+      .first-button {
+        margin-bottom: 0.5rem;
+      }
     }
   }
 }

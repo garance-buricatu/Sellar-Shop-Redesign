@@ -1,0 +1,91 @@
+@media (max-width: 700px) {
+  .login {
+    &-inner {
+      width: 300px;
+    }
+  }
+
+  .dashboard {
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: 1fr;
+
+    .sidebar {
+      .header {
+        cursor: pointer;
+        .carrot {
+          display: block;
+        }
+      }
+
+      .menu {
+        padding-top: 0.5rem;
+      }
+    }
+
+    .main {
+      &-inner {
+        .seminar {
+          .Calendar.-noFocusOutline.-ltr {
+            width: 100%;
+          }
+
+          &-inner-1 {
+            margin-bottom: 15px;
+          }
+
+          &-inner {
+            padding: 15px;
+            margin: 0px;
+          }
+        }
+      }
+    }
+  }
+
+  .edit-artwork {
+    img {
+      width: 50%;
+    }
+  }
+
+  .home {
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: 1fr;
+
+    .sidebar {
+      align-items: center;
+      padding-bottom: 0px;
+
+      .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 15px;
+        cursor: pointer;
+        p {
+          text-align: center;
+        }
+
+        .carrot {
+          display: block;
+        }
+      }
+
+      &-inner {
+        margin: 0px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  }
+
+  .view-artwork {
+    img {
+      width: 70%;
+    }
+  }
+}

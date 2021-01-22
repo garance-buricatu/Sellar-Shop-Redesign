@@ -76,7 +76,7 @@ ul {
     -webkit-box-shadow: 0 0 10px #bababa;
     box-shadow: 0 0 10px #bababa;
     height: 30%;
-    width: 30%;
+    width: 500px;
   }
 }
 
@@ -93,6 +93,10 @@ ul {
       flex-direction: column;
       justify-content: center;
       align-items: center;
+
+      .carrot {
+        display: none;
+      }
     }
 
     .menu {
@@ -218,6 +222,7 @@ ul {
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 50%;
           }
         }
       }
@@ -231,6 +236,12 @@ ul {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  img {
+    padding: 3px;
+    border: 1px solid $dark-color;
+    border-radius: 10px;
+  }
 
   &-inner {
     width: 80%;
@@ -246,6 +257,12 @@ ul {
     background-color: $primary-color;
     display: flex;
     flex-direction: column;
+
+    .header {
+      .carrot {
+        display: none;
+      }
+    }
 
     .dropdown {
       display: inline-block;
@@ -303,3 +320,6 @@ ul {
     width: 30%;
   }
 }
+
+@import "./tablet";
+@import "./mobile";

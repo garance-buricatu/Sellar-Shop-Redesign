@@ -48,6 +48,7 @@ const EditArtwork = ({ getArtwork, editArtwork, artwork: {artwork, loading}, mat
             <div><h1 className="form-text my-1">Edit Artwork</h1></div>
             {artwork === null || loading ? <Spinner /> : (
                 <img
+                width="30%"
                 src={photoURL}
                 alt={`artwork with id: ${artwork._id}`}
                 />

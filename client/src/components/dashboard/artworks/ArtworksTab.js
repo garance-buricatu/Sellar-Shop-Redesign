@@ -14,77 +14,172 @@ const ArtworksTab = ({ getArtworks, deleteArtwork, artwork: { artworks, loading 
         getArtworks(); 
     }, [getArtworks]);
 
-    const allArtworks = artworks.map(art => (
-        <tr key={art._id}>
-            <td><div>
-                <img
-                    src={art.photoURL}
-                    width="80%"
-                    height="auto"
-                    alt={`artwork id:${art._id}`}
-                />
-            </div></td>
-            <td><div>{art.title}</div></td>
-            <td><div>{art.size}</div></td>
-            <td><div>{art.medium}</div></td>
-            <td><div>{art.price}</div></td>
-            <td><div>{art.latest === true ? "YES" : "NO"}</div></td>
-            <td><div>
-                {art.date}
-            </div></td>
-            <td className="actions">
-                <div>
-                    <Link
-                        to={`/edit-artwork/${art._id}`}
-                        className="btn btn-primary m-1"
-                    >
-                        Edit
-                    </Link>
-                    <button 
-                        className="btn btn-danger m-1"
-                        onClick={() => deleteArtwork(art._id)}
-                    >
-                        Delete
-                    </button>
-                </div>
-            </td>
-        </tr>
-    ));
+    const colSize = Math.floor(artworks.length / 4);
+    const colRem = artworks.length % 4;
 
     return (
-        <div>
+        <div className="grid">
             <a name="top"></a>
             <AddArtwork />
-            {
-                artworks.length === 0 ? (
-                    <div className="p-2">
-                        <h1 className="lead">
-                            No Artworks Yet
-                        </h1>
-                    </div>
-                ) : loading ? (
-                    <Spinner />
-                ) : (
-                    <div className='artworks m-2'>
-                        <h1 className='lead'>All Artworks</h1>
-                        <table className="table my-1">
-                            <thead>
-                                <tr>
-                                    <th>Photo</th>
-                                    <th>Title</th>
-                                    <th>Dimensions (in inches)</th>
-                                    <th>Medium</th>
-                                    <th>Price</th>
-                                    <th>Add to Latest</th>
-                                    <th>Year Created</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>{allArtworks}</tbody>
-                        </table>
-                    </div>
+            <h2 className="m-2">All Artworks</h2>
+            {loading || artworks === null ? <Spinner /> : (
+                artworks.length === 0 ? (<p className="centered p-1"><strong>There are no artworks yet</strong></p>) : (
+                    <ul className="row">
+                        <div className="column">
+                            {
+                                artworks.slice(0, colSize).map(art => (
+                                    <div className="column-inner p-1">
+                                        <img src={art.photoURL} width="100%" alt={`id: ${art._id}`}></img>
+                                        <div className="column-buttons m-1">
+                                            <Link
+                                                to={`/edit-artwork/${art._id}`}
+                                                className="btn btn-primary first-button"
+                                            >
+                                                Edit
+                                            </Link>
+                                            <button 
+                                                className="btn btn-danger"
+                                                onClick={() => deleteArtwork(art._id)}
+                                            >
+                                                Delete
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))
+                            }
+                            {
+                                colRem > 0 && 
+                                    <div className="column-inner p-1">
+                                        <img src={artworks[colSize * 4].photoURL} width="100%" alt={`id: ${artworks[colSize * 4]._id}`}></img>
+                                        <div className="m-1 column-buttons m-1">
+                                            <Link
+                                                to={`/edit-artwork/${artworks[colSize * 4]._id}`}
+                                                className="btn btn-primary first-button"
+                                            >
+                                                Edit
+                                            </Link>
+                                            <button 
+                                                className="btn btn-danger"
+                                                onClick={() => deleteArtwork(artworks[colSize * 4]._id)}
+                                            >
+                                                Delete
+                                            </button>
+                                        </div>
+                                    </div>
+                            }
+                        </div>
+                        <div className="column">
+                            {
+                                artworks.slice(colSize, colSize * 2).map(art => (
+                                    <div className="column-inner p-1">
+                                        <img src={art.photoURL} width="100%" alt={`id: ${art._id}`}></img>
+                                        <div className="column-buttons m-1">
+                                            <Link
+                                                to={`/edit-artwork/${art._id}`}
+                                                className="btn btn-primary first-button"
+                                            >
+                                                Edit
+                                            </Link>
+                                            <button 
+                                                className="btn btn-danger"
+                                                onClick={() => deleteArtwork(art._id)}
+                                            >
+                                                Delete
+                                            </button>
+                                        </div>
+                                        </div>
+                                ))
+                            }
+                            {
+                                colRem > 1 && 
+                                <div className="column-inner p-1">
+                                    <img src={artworks[colSize * 4 + 1].photoURL} width="100%" alt={`id: ${artworks[colSize * 4 + 1]._id}`}></img>
+                                    <div className="column-buttons m-1">
+                                        <Link
+                                            to={`/edit-artwork/${artworks[colSize * 4 + 1]._id}`}
+                                            className="btn btn-primary first-button"
+                                        >
+                                            Edit
+                                        </Link>
+                                        <button 
+                                            className="btn btn-danger"
+                                            onClick={() => deleteArtwork(artworks[colSize * 4 + 1]._id)}
+                                        >
+                                            Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <div className="column">
+                            {
+                                artworks.slice(colSize * 2, colSize * 3).map(art => (
+                                    <div className="column-inner p-1">
+                                        <img src={art.photoURL} width="100%" alt={`id: ${art._id}`}></img>
+                                        <div className="column-buttons m-1">
+                                            <Link
+                                                to={`/edit-artwork/${art._id}`}
+                                                className="btn btn-primary first-button"
+                                            >
+                                                Edit
+                                            </Link>
+                                            <button 
+                                                className="btn btn-danger"
+                                                onClick={() => deleteArtwork(art._id)}
+                                            >
+                                                Delete
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))
+                            }
+                            {
+                                colRem > 2 && 
+                                <div className="column-inner p-1">
+                                    <img src={artworks[colSize * 4 + 2].photoURL} width="100%" alt={`id: ${artworks[colSize * 4 + 2]._id}`}></img>
+                                    <div className="column-buttons m-1">
+                                        <Link
+                                            to={`/edit-artwork/${artworks[colSize * 4 + 2]._id}`}
+                                            className="btn btn-primary first-button"
+                                        >
+                                            Edit
+                                        </Link>
+                                        <button 
+                                            className="btn btn-danger"
+                                            onClick={() => deleteArtwork(artworks[colSize * 4 + 2]._id)}
+                                        >
+                                            Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <div className="column">
+                            {
+                                artworks.slice(colSize * 3, colSize * 4).map(art => (
+                                    <div className="column-inner p-1">
+                                        <img src={art.photoURL} width="100%" alt={`id: ${art._id}`}></img>
+                                        <div className="column-buttons m-1">
+                                            <Link
+                                                to={`/edit-artwork/${art._id}`}
+                                                className="btn btn-primary first-button"
+                                            >
+                                                Edit
+                                            </Link>
+                                            <button 
+                                                className="btn btn-danger"
+                                                onClick={() => deleteArtwork(art._id)}
+                                            >
+                                                Delete
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </ul>
                 )
-            }
+            )}
             <a className="btn btn-primary m-2" href="#top">
                 Back to Top
             </a>

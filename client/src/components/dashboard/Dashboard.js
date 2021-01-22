@@ -14,19 +14,25 @@ const Dashboard = ({ logout, auth: { loading, user } }) => {
     
     const [selectedTab, setSelectedTab] = useState('artworks');
 
+    const [show, setShow] = useState(true);
+
     return (
         <Fragment>
             { !loading && (
                 <div className="dashboard">
                     <div className="sidebar">
-                        <div className="header">
+                        <div 
+                            className="header"
+                            onClick={() => setShow(!show)}
+                        >
                             <h1 className="lead">
                                 {user && user.name}
                             </h1>
                             <p>Admin</p>
+                            <i class="fa fa-sort-desc carrot" aria-hidden="true"></i>
                         </div>
-                        <div className="menu">
-                            <div>
+                        {show && 
+                            <div className="menu">
                                 <div 
                                     className="list-item"
                                     onClick={() => setSelectedTab('artworks')}
@@ -55,14 +61,12 @@ const Dashboard = ({ logout, auth: { loading, user } }) => {
                                     <i class="fa fa-trophy" aria-hidden="true"></i>
                                     <p className="text-menu">Edit Awards and Videos</p>
                                 </div>
-                            </div>
-                            <div>
                                 <div 
-                                    className="list-item"
-                                    onClick={() => setSelectedTab('account')}
-                                >
-                                    <i class="fa fa-cog" aria-hidden="true"></i>
-                                    <p className="text-menu">My Account</p>
+                                className="list-item"
+                                onClick={() => setSelectedTab('account')}
+                            >
+                                <i class="fa fa-cog" aria-hidden="true"></i>
+                                <p className="text-menu">My Account</p>
                                 </div>
                                 <div 
                                     className="list-item"
@@ -70,9 +74,9 @@ const Dashboard = ({ logout, auth: { loading, user } }) => {
                                 >
                                     <i class="fa fa-sign-out" aria-hidden="true"></i>
                                     <p className="text-menu">Logout</p>
-                                </div>
+                                </div>        
                             </div>
-                        </div>
+                        }
                     </div>
                     <div className="main">
                         <div className="main-inner m-4">

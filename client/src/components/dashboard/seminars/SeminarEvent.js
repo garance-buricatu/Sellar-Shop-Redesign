@@ -15,8 +15,8 @@ export const SeminarEvent = ({ sem, setToggle, toggle, deleteSeminar }) => {
             <div className="display-seminar-inner">
                 <img
                     src={sem.photoURL}
-                    height="150px"
-                    width="auto"
+                    height="auto"
+                    width="150px"
                     className="display-seminar-inner-img"
                     alt={`seminar with id: ${sem._id}`}
                 />
