@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 const ContactTab = props => {
     return (
-        <div>
-            contact
+        <div className="contact">
+            <p>For sales or more information: <br/> Bonnie Frederico <br/> bonnie.frederico@gmail.com <br/> + 1 508-839-4550</p>
         </div>
     )
 }

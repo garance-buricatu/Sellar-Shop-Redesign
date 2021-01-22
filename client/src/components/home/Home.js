@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 
 import Watercolor from './artwork_pages/Watercolor';
 import Pencil from './artwork_pages/Pencil';
@@ -14,6 +14,12 @@ const Home = props => {
 
     const [show, setShow] = useState(true);
 
+    const dropdownItem = useRef(null);
+
+    const changeStyle = () => {
+        console.log(dropdownItem.current);
+    }
+
     return (
         <div className="home">
             <div className="sidebar p-2">
@@ -27,37 +33,40 @@ const Home = props => {
                 {show &&
                     <div className="sidebar-inner my-2">
                         <div className="dropdown">
-                            <h1 className="text-menu-home dropdown-btn">PAINTINGS</h1>
-                            <div className="dropdown-content">
+                            <h1 className={`text-menu-small dropdown-btn`}>PAINTINGS</h1>
+                            <div className="dropdown-content" ref={dropdownItem}>
                                 <p 
-                                    className="text-menu-small"
-                                    onClick={() => setSelectedTab('watercolor')}
+                                    className={`text-menu-small ${selectedTab === 'watercolor' ? 'selected' : ''}`}
+                                    onClick={() => {
+                                        setSelectedTab('watercolor');
+                                        changeStyle();
+                                    }}
                                 >Watercolor</p>
                                 <p 
-                                    className="text-menu-small"
+                                    className={`text-menu-small ${selectedTab === 'pencil' ? 'selected' : ''}`}
                                     onClick={() => setSelectedTab('pencil')}    
                                 >Pencil</p>
                                 <p 
-                                    className="text-menu-small"
+                                    className={`text-menu-small ${selectedTab === 'oil' ? 'selected' : ''}`}
                                     onClick={() => setSelectedTab('oil')}
                                 >Oil</p>
                             </div>
                         </div>
                         <div>
                         <h1 
-                            className="text-menu-home"
+                            className={`text-menu-small ${selectedTab === 'seminars' ? 'selected' : ''}`}
                             onClick={() => setSelectedTab('seminars')}
                         >SEMINARS</h1>
                         </div>
                         <div>
                         <h1 
-                            className="text-menu-home"
+                            className={`text-menu-small ${selectedTab === 'about' ? 'selected' : ''}`}
                             onClick={() => setSelectedTab('about')}
                         >ABOUT THE ARTIST</h1>
                         </div>
                         <div>
                         <h1 
-                            className="text-menu-home"
+                            className={`text-menu-small ${selectedTab === 'contact' ? 'selected' : ''}`}
                             onClick={() => setSelectedTab('contact')}    
                         >CONTACT</h1>
                         </div>

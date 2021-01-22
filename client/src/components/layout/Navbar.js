@@ -10,8 +10,8 @@ const Navbar = props => {
     return (
         <div className="navbar">
             <div className="dark-overlay">
-                <Link to='/' style={{ textDecoration: 'none' }} onClick={() => history.go(0)}>
-                    <h1 className="x-large px-2">
+                <Link style={{ textDecoration: 'none' }} onClick={() => history.go(0)}>
+                    <h1 className="x-large">
                         The Sellar Shop
                     </h1>
                 </Link>

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ADD_SEMINAR, SEMINAR_ERROR, GET_SEMINARS, DELETE_SEMINAR, CLEAR_SEMINAR } from './types'
+import { ADD_SEMINAR, SEMINAR_ERROR, GET_SEMINARS, DELETE_SEMINAR, CLEAR_SEMINAR, GET_SEMINAR } from './types'
 import { setAlert } from '../actions/alert'
 
 // get all seminars
@@ -89,8 +89,8 @@ export const getSeminar = id => async dispatch => {
         dispatch({type: CLEAR_SEMINAR });
 
         dispatch({
-            type: GET_SEMINARS,
-            payload: res.data //artwork
+            type: GET_SEMINAR,
+            payload: res.data //seminar
         })
 
     } catch (err) {

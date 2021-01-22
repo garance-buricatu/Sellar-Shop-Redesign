@@ -120,11 +120,12 @@ export const addArtwork = (formData) => async dispatch => {
         dispatch(setAlert('Artwork Added', 'success'));        
 
     } catch (err) {
-        console.log(err);
-        const errors = err.response.data.errors;
+        const errors = err.response.data;
+        console.log(errors);
 
         if (errors) {
-            errors.forEach(error => dispatch(setAlert(error.msg, 'danger'))); // prints errors returned by endpoint
+            // Object.keys(errors).forEach(key => dispatch(setAlert(errors[key].msg, 'danger'))); // prints errors returned by endpoint
+            Object.keys(errors).forEach(key => dispatch(setAlert(errors[key], 'danger')));
         }
 
         dispatch({

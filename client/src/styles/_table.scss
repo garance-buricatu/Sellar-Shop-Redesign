@@ -1,4 +1,5 @@
 .table {
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 
@@ -54,19 +55,27 @@
     left: -9999px;
   }
 
-  td {
-    /* Behave  like a "row" */
-    border: none;
-    position: relative;
-    padding-left: 50%;
+  .table {
+    tr {
+      border: 1px solid $hover-color;
+      margin-bottom: 2px;
 
-    div {
-      justify-content: flex-start;
-    }
+      &:hover {
+        background-color: $hover-color;
+      }
 
-    img {
-      max-height: 400px;
-      width: auto;
+      td {
+        position: relative;
+
+        div {
+          justify-content: flex-start;
+        }
+
+        img {
+          max-height: 400px;
+          width: auto;
+        }
+      }
     }
   }
 }

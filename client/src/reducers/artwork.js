@@ -12,6 +12,11 @@ export default function(state = initialState, action) {
 
     switch(type){
         case ADD_ARTWORK:
+            return {
+                ...state,
+                artwork: payload,
+                loading: false
+            }
         case EDIT_ARTWORK:
         case GET_ARTWORK:
             return {

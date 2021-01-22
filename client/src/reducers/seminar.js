@@ -1,4 +1,4 @@
-import { ADD_SEMINAR, SEMINAR_ERROR, GET_SEMINARS, DELETE_SEMINAR, CLEAR_SEMINAR } from '../actions/types'
+import { ADD_SEMINAR, SEMINAR_ERROR, GET_SEMINARS, GET_SEMINAR, DELETE_SEMINAR, CLEAR_SEMINAR } from '../actions/types'
 
 const initialState = {
     seminar: null,
@@ -12,6 +12,7 @@ export default function(state = initialState, action) {
 
     switch(type){
         case ADD_SEMINAR: 
+        case GET_SEMINAR:
             return {
                 ...state,
                 seminar: payload,

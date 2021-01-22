@@ -53,14 +53,18 @@ router.post(
         if (date) artworkFields.date = date;
 
         try {
+            //check for duplicates
+            let artwork = await Artwork.find({'photoURL' : photoURL });
+            if (artwork === null) res.status(400).json({'msg': 'Artwork already exists'});
+
             // create
-            let artwork = new Artwork(artworkFields);
+            else {
+                artwork = new Artwork(artworkFields);
 
-            await artwork.save();
+                await artwork.save();
 
-            res.send(artwork);
-
-
+                res.send(artwork);
+            }
         } catch (err) {
             console.error(err.message);
             res.status(500).send('Server Error');

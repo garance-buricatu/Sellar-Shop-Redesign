@@ -97,7 +97,7 @@ router.get('/', async (req, res) => {
 router.get('/:seminar_id', async (req, res) => {
     try {
 
-        const seminar = await Artwork.findById(req.params.seminar_id);
+        const seminar = await Seminar.findById(req.params.seminar_id).populate('user', ['name']);
         
         if (!seminar) return res.status(400).json({ msg: 'Seminar not found' });
 
