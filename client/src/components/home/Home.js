@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 
 import Watercolor from './artwork_pages/Watercolor';
 import Pencil from './artwork_pages/Pencil';
@@ -14,12 +14,6 @@ const Home = props => {
 
     const [show, setShow] = useState(true);
 
-    const dropdownItem = useRef(null);
-
-    const changeStyle = () => {
-        console.log(dropdownItem.current);
-    }
-
     return (
         <div className="home">
             <div className="sidebar p-2">
@@ -34,13 +28,10 @@ const Home = props => {
                     <div className="sidebar-inner my-2">
                         <div className="dropdown">
                             <h1 className={`text-menu-small dropdown-btn`}>PAINTINGS</h1>
-                            <div className="dropdown-content" ref={dropdownItem}>
+                            <div className="dropdown-content">
                                 <p 
                                     className={`text-menu-small ${selectedTab === 'watercolor' ? 'selected' : ''}`}
-                                    onClick={() => {
-                                        setSelectedTab('watercolor');
-                                        changeStyle();
-                                    }}
+                                    onClick={() => setSelectedTab('watercolor')}
                                 >Watercolor</p>
                                 <p 
                                     className={`text-menu-small ${selectedTab === 'pencil' ? 'selected' : ''}`}
