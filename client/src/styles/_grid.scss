@@ -21,6 +21,7 @@
 
       img {
         border: 1px solid $dark-color;
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
       }
 
       &:hover {

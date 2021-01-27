@@ -43,6 +43,7 @@ ul {
 
 .navbar {
   background: url("../components/layout/ElmParkbanner.jpg");
+  background-size: 100%;
   filter: brightness(80%);
   z-index: 1;
   width: 100%;
@@ -327,6 +328,7 @@ ul {
 
   img {
     width: 30%;
+    box-shadow: 0 0 25px rgba(63, 42, 42, 0.5);
   }
 }
 

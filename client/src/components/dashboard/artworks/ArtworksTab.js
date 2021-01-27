@@ -21,7 +21,7 @@ const ArtworksTab = ({ getArtworks, deleteArtwork, artwork: { artworks, loading 
         <div className="grid">
             <a name="top"></a>
             <AddArtwork />
-            <h2 className="m-2">All Artworks</h2>
+            <p className="lead m-2"><strong>All Artworks</strong></p>
             {loading || artworks === null ? <Spinner /> : (
                 artworks.length === 0 ? (<p className="centered p-1"><strong>There are no artworks yet</strong></p>) : (
                     <ul className="row">

@@ -24,7 +24,7 @@ const AllAwards = ({ awards, deleteAward }) => {
     ));
     return (
         <div>
-            <h2 className="mx-2">All Awards</h2>
+            <p className="lead mx-2"><strong>All Awards</strong></p>
             {awards.length === 0 ? (
                 <div className="p-2">
                     <h1 className="lead">
@@ -32,8 +32,8 @@ const AllAwards = ({ awards, deleteAward }) => {
                     </h1>
                 </div>
             ) : (
-                <div className="all-awards mx-3">
-                    <table className="table">
+                <div className="all-awards mx-2">
+                    <table className="table p-1">
                         <thead>
                             <tr>
                                 <th>Title</th>

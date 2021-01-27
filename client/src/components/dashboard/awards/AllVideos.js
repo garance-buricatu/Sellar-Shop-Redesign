@@ -29,7 +29,7 @@ const AllVideos = ({videos, deleteVideo }) => {
                 </div>
             ): (
                 <div className="m-2">
-                    <h2>All Videos</h2>
+                    <p className="lead"><strong>All Videos</strong></p>
                     <div className="all-videos">         
                         {allVideos}
                    </div>

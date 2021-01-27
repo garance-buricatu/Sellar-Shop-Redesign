@@ -16,7 +16,7 @@ const Latest = ({ getArtworksLatest, artwork : { loading, artworks }}) => {
     return (
         <div>
             <div className="grid p-2">
-            <p className="lead centered">Latest Works</p>
+            <p className="lead centered"><strong>Latest Works</strong></p>
             {loading || artworks === null ? <Spinner /> : (
                 artworks.length === 0 ? (<p className="centered p-1"><strong>There are no "latest" artworks to show yet</strong></p>) : (
                     <ul className="row">

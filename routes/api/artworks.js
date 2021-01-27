@@ -55,7 +55,7 @@ router.post(
         try {
             //check for duplicates
             let artwork = await Artwork.find({'photoURL' : photoURL });
-            if (artwork === null) res.status(400).json({'msg': 'Artwork already exists'});
+            if (artwork.length !== 0) res.status(400).json({'msg': 'Artwork already exists'});
 
             // create
             else {

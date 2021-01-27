@@ -17,7 +17,7 @@ const Oil = ({ getArtworksOil, artwork: {loading, artworks} }) => {
     
     return (
         <div className="grid p-2">
-            <p className="lead centered">Oil</p>
+            <p className="lead centered"><strong>Oil</strong></p>
             {loading || artworks === null ? <Spinner /> : (
                 artworks.length === 0 ? (<p className="centered p-1"><strong>There are no artworks of medium "oil" yet</strong></p>) : (
                     <ul className="row">

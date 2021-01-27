@@ -37,7 +37,7 @@ const Awards = ({ addAwards, getBonnieProfile, profile: { profile, loading }, hi
                     className="form m-2 "
                     onSubmit={e => onSubmit(e)}
                 >
-                    <p className="form-text"><strong>Add an Award</strong></p>
+                    <p className="lead"><strong>Add an Award</strong></p>
                     <div className="form-group">
                         <p className="form-text">
                             <strong>Title : *</strong>
