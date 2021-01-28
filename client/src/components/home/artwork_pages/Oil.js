@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { getArtworksOil } from '../../../actions/artwork'
+import { getArtworksOil, clearArtwork } from '../../../actions/artwork'
 import { Link } from 'react-router-dom';
 
 import Spinner from '../../layout/Spinner'
 
-const Oil = ({ getArtworksOil, artwork: {loading, artworks} }) => {
+const Oil = ({ getArtworksOil,clearArtwork, artwork: {loading, artworks} }) => {
 
     useEffect(() => { 
         getArtworksOil();
-    }, [getArtworksOil]);
+        clearArtwork();
+    }, [getArtworksOil, clearArtwork]);
 
     const colSize = Math.floor(artworks.length / 4);
     const colRem = artworks.length % 4;
@@ -84,6 +85,7 @@ const Oil = ({ getArtworksOil, artwork: {loading, artworks} }) => {
 
 Oil.propTypes = {
     getArtworksOil : PropTypes.func.isRequired,
+    clearArtwork: PropTypes.func.isRequired,
     artwork: PropTypes.object.isRequired
 }
 
@@ -91,4 +93,4 @@ const mapStateToProps = state => ({
     artwork: state.artwork
 });
 
-export default connect(mapStateToProps, { getArtworksOil })(Oil)
+export default connect(mapStateToProps, { getArtworksOil, clearArtwork })(Oil)

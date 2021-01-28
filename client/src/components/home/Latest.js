@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { getArtworksLatest } from '../../actions/artwork'
+import { getArtworksLatest, clearArtwork } from '../../actions/artwork'
 import { Link } from 'react-router-dom'
 import Spinner from '../layout/Spinner'
 
-const Latest = ({ getArtworksLatest, artwork : { loading, artworks }}) => {
+const Latest = ({ getArtworksLatest, clearArtwork, artwork : { loading, artworks }}) => {
     useEffect(() => { 
         getArtworksLatest(); 
-    }, [getArtworksLatest]);
+        clearArtwork();
+    }, [getArtworksLatest, clearArtwork]);
 
     const colSize = Math.floor(artworks.length / 4);
     const colRem = artworks.length % 4;
@@ -83,6 +84,7 @@ const Latest = ({ getArtworksLatest, artwork : { loading, artworks }}) => {
 
 Latest.propTypes = {
     getArtworksLatest : PropTypes.func.isRequired,
+    clearArtwork: PropTypes.func.isRequired,
     artwork: PropTypes.object.isRequired
 }
 
@@ -90,4 +92,4 @@ const mapStateToProps = state => ({
     artwork: state.artwork
 });
 
-export default connect(mapStateToProps, { getArtworksLatest })(Latest)
+export default connect(mapStateToProps, { getArtworksLatest, clearArtwork })(Latest)

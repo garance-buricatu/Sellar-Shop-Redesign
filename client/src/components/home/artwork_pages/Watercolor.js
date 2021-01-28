@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { getArtworksWatercolor } from '../../../actions/artwork'
+import { getArtworksWatercolor, clearArtwork } from '../../../actions/artwork'
 import { Link } from 'react-router-dom';
 
 import Spinner from '../../layout/Spinner'
 
-const Watercolor = ({ getArtworksWatercolor, artwork: {loading, artworks} }) => {
+const Watercolor = ({ getArtworksWatercolor, clearArtwork, artwork: {loading, artworks} }) => {
 
     useEffect(() => { 
         getArtworksWatercolor();
-    }, [getArtworksWatercolor]);
+        clearArtwork();
+    }, [getArtworksWatercolor, clearArtwork]);
 
     const colSize = Math.floor(artworks.length / 4);
     const colRem = artworks.length % 4;
@@ -84,6 +85,7 @@ const Watercolor = ({ getArtworksWatercolor, artwork: {loading, artworks} }) => 
 
 Watercolor.propTypes = {
     getArtworksWatercolor : PropTypes.func.isRequired,
+    clearArtwork: PropTypes.func.isRequired,
     artwork: PropTypes.object.isRequired
 }
 
@@ -91,4 +93,4 @@ const mapStateToProps = state => ({
     artwork: state.artwork
 });
 
-export default connect(mapStateToProps, { getArtworksWatercolor })(Watercolor)
+export default connect(mapStateToProps, { getArtworksWatercolor, clearArtwork })(Watercolor)

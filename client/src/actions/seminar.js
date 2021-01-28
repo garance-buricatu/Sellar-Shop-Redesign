@@ -100,3 +100,18 @@ export const getSeminar = id => async dispatch => {
         });
     }
 };
+
+// clear artwork
+export const clearSeminar = () => async dispatch => {
+    try {
+        dispatch({
+            type: CLEAR_SEMINAR
+        })
+    } catch (err) {
+        dispatch({
+            type: SEMINAR_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
+    }
+    
+};

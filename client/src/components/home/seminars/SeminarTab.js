@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { getSeminars } from '../../../actions/seminar'
+import { getSeminars, clearSeminar } from '../../../actions/seminar'
 import { Link } from 'react-router-dom'
 import Spinner from '../../layout/Spinner'
 
-const SeminarTab = ({ getSeminars, seminar : { loading, seminars }}) => {
+const SeminarTab = ({ getSeminars, clearSeminar, seminar : { loading, seminars }}) => {
     useEffect(() => { 
         getSeminars(); 
+        clearSeminar();
     }, [getSeminars]);
 
     const colSize = Math.floor(seminars.length / 4);
@@ -83,6 +84,7 @@ const SeminarTab = ({ getSeminars, seminar : { loading, seminars }}) => {
 
 SeminarTab.propTypes = {
     getSeminars : PropTypes.func.isRequired,
+    clearSeminar: PropTypes.func.isRequired,
     seminar: PropTypes.object.isRequired
 }
 
@@ -90,4 +92,4 @@ const mapStateToProps = state => ({
     seminar: state.seminar
 });
 
-export default connect(mapStateToProps, { getSeminars })(SeminarTab)
+export default connect(mapStateToProps, { getSeminars, clearSeminar })(SeminarTab)

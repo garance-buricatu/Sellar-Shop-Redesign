@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { getArtworksPencil } from '../../../actions/artwork'
+import { getArtworksPencil, clearArtwork } from '../../../actions/artwork'
 import { Link } from 'react-router-dom';
 
 import Spinner from '../../layout/Spinner'
 
-const Pencil = ({ getArtworksPencil, artwork: {loading, artworks} }) => {
+const Pencil = ({ getArtworksPencil,clearArtwork, artwork: {loading, artworks} }) => {
 
     useEffect(() => { 
         getArtworksPencil();
-    }, [getArtworksPencil]);
+        clearArtwork();
+    }, [getArtworksPencil, clearArtwork]);
 
     const colSize = Math.floor(artworks.length / 4);
     const colRem = artworks.length % 4;
@@ -84,6 +85,7 @@ const Pencil = ({ getArtworksPencil, artwork: {loading, artworks} }) => {
 
 Pencil.propTypes = {
     getArtworksPencil : PropTypes.func.isRequired,
+    clearArtwork: PropTypes.func.isRequired,
     artwork: PropTypes.object.isRequired
 }
 
@@ -91,4 +93,4 @@ const mapStateToProps = state => ({
     artwork: state.artwork
 });
 
-export default connect(mapStateToProps, { getArtworksPencil })(Pencil)
+export default connect(mapStateToProps, { getArtworksPencil, clearArtwork })(Pencil)

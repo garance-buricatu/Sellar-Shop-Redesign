@@ -16,7 +16,7 @@ const ViewSeminar = ({ getSeminar, seminar: { loading, seminar }, match }) => {
     return (
         <div>
             {seminar === null || loading ? <Spinner /> : (
-                <div className="view-artwork m-2">
+                <div className="view-artwork p-2">
                     <img
                         src={seminar.photoURL}
                         className="m-1"
