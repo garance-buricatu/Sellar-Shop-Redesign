@@ -122,6 +122,7 @@
   opacity: 0.9;
   //background:
   color: #333;
+  border-radius: 15px;
 
   &.alert-primary {
   }
@@ -135,7 +136,7 @@
   }
 
   &.alert-danger {
-    background-color: red;
+    background-color: lighten(red, 20%);
     color: white;
   }
 }

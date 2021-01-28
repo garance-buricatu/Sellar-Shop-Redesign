@@ -120,17 +120,17 @@ export const addArtwork = (formData) => async dispatch => {
         dispatch(setAlert('Artwork Added', 'success'));        
 
     } catch (err) {
-        const errors = err.response.data;
-        console.log(errors);
+        const errors = err.response.data.errors;
 
         if (errors) {
-            // Object.keys(errors).forEach(key => dispatch(setAlert(errors[key].msg, 'danger'))); // prints errors returned by endpoint
-            Object.keys(errors).forEach(key => dispatch(setAlert(errors[key], 'danger')));
+            errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
         }
+
+        if (err.response.data.msg != null) dispatch(setAlert(err.response.data.msg, 'danger'));
 
         dispatch({
             type: ARTWORK_ERROR,
-            payload: { msg: err.response.statusText, status: err.response.status }
+            payload: { msg: err.response.data.msg, status: err.response.status }
         });
     }
 };

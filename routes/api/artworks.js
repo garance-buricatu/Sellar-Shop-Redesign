@@ -55,7 +55,7 @@ router.post(
         try {
             //check for duplicates
             let artwork = await Artwork.find({'photoURL' : photoURL });
-            if (artwork.length !== 0) res.status(400).json({'msg': 'Artwork already exists'});
+            if (artwork.length !== 0) return res.status(400).json({ msg: 'Artwork already exists'});
 
             // create
             else {
@@ -103,7 +103,7 @@ router.put('/:artwork_id', auth, async (req, res) => {
             let artwork = await Artwork.findById(req.params.artwork_id);
 
             if (!artwork){
-                res.status(400).json({'msg': 'Artwork was not found'});
+                res.status(400).json({ msg: 'Artwork was not found'});
             }
             else {
                 artwork = await Artwork.findByIdAndUpdate(
