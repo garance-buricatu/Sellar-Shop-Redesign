@@ -271,18 +271,18 @@ ul {
       display: inline-block;
       position: relative;
 
-      .dropdown-content {
-        display: none;
-        z-index: 1;
+      // .dropdown-content {
+      //   display: none;
+      //   z-index: 1;
 
-        h1 {
-          display: block;
-        }
-      }
+      //   h1 {
+      //     display: block;
+      //   }
+      // }
 
-      &:hover .dropdown-content {
-        display: block;
-      }
+      // &:hover .dropdown-content {
+      //   display: block;
+      // }
 
       &:hover {
         .dropdown-btn {
