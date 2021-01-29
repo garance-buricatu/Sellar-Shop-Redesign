@@ -9,7 +9,7 @@ const SeminarTab = ({ getSeminars, clearSeminar, seminar : { loading, seminars }
     useEffect(() => { 
         getSeminars(); 
         clearSeminar();
-    }, [getSeminars]);
+    }, [getSeminars, clearSeminar]);
 
     const colSize = Math.floor(seminars.length / 4);
     const colRem = seminars.length % 4;

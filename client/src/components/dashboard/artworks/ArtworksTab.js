@@ -2,24 +2,23 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { getArtworks, deleteArtwork } from '../../../actions/artwork'
+import { getArtworks, deleteArtwork, clearArtwork } from '../../../actions/artwork'
 
 import Spinner from '../../layout/Spinner'
 import AddArtwork from '../artworks/AddArtwork';
 
-//https://freefrontend.com/css-gallery/
-
-const ArtworksTab = ({ getArtworks, deleteArtwork, artwork: { artworks, loading } }) => {
+const ArtworksTab = ({ getArtworks, deleteArtwork, clearArtwork, artwork: { artworks, loading } }) => {
     useEffect(() => { 
         getArtworks(); 
-    }, [getArtworks]);
+        clearArtwork();
+    }, [getArtworks, clearArtwork]);
 
     const colSize = Math.floor(artworks.length / 4);
     const colRem = artworks.length % 4;
 
     return (
         <div className="grid">
-            <a name="top"></a>
+            <a name="top" className="anchor" href="/#">X</a>
             <AddArtwork />
             <p className="lead m-2"><strong>All Artworks</strong></p>
             {loading || artworks === null ? <Spinner /> : (
@@ -28,15 +27,17 @@ const ArtworksTab = ({ getArtworks, deleteArtwork, artwork: { artworks, loading 
                         <div className="column">
                             {
                                 artworks.slice(0, colSize).map(art => (
-                                    <div className="column-inner p-1">
+                                    <div className="column-inner p-1" key={art._id}>
                                         <img src={art.photoURL} width="100%" alt={`id: ${art._id}`}></img>
                                         <div className="column-buttons m-1">
+                                            <button>
                                             <Link
                                                 to={`/edit-artwork/${art._id}`}
-                                                className="btn btn-primary first-button"
+                                                className="btn btn-primary"
                                             >
                                                 Edit
                                             </Link>
+                                            </button>
                                             <button 
                                                 className="btn btn-danger"
                                                 onClick={() => deleteArtwork(art._id)}
@@ -52,12 +53,14 @@ const ArtworksTab = ({ getArtworks, deleteArtwork, artwork: { artworks, loading 
                                     <div className="column-inner p-1">
                                         <img src={artworks[colSize * 4].photoURL} width="100%" alt={`id: ${artworks[colSize * 4]._id}`}></img>
                                         <div className="m-1 column-buttons m-1">
-                                            <Link
-                                                to={`/edit-artwork/${artworks[colSize * 4]._id}`}
-                                                className="btn btn-primary first-button"
-                                            >
-                                                Edit
-                                            </Link>
+                                            <button>
+                                                <Link
+                                                    to={`/edit-artwork/${artworks[colSize * 4]._id}`}
+                                                    className="btn btn-primary"
+                                                >
+                                                    Edit
+                                                </Link>
+                                            </button>
                                             <button 
                                                 className="btn btn-danger"
                                                 onClick={() => deleteArtwork(artworks[colSize * 4]._id)}
@@ -71,15 +74,17 @@ const ArtworksTab = ({ getArtworks, deleteArtwork, artwork: { artworks, loading 
                         <div className="column">
                             {
                                 artworks.slice(colSize, colSize * 2).map(art => (
-                                    <div className="column-inner p-1">
+                                    <div className="column-inner p-1" key={art._id}>
                                         <img src={art.photoURL} width="100%" alt={`id: ${art._id}`}></img>
                                         <div className="column-buttons m-1">
-                                            <Link
-                                                to={`/edit-artwork/${art._id}`}
-                                                className="btn btn-primary first-button"
-                                            >
-                                                Edit
-                                            </Link>
+                                            <button>
+                                                <Link
+                                                    to={`/edit-artwork/${art._id}`}
+                                                    className="btn btn-primary"
+                                                >
+                                                    Edit
+                                                </Link>
+                                            </button>
                                             <button 
                                                 className="btn btn-danger"
                                                 onClick={() => deleteArtwork(art._id)}
@@ -95,12 +100,14 @@ const ArtworksTab = ({ getArtworks, deleteArtwork, artwork: { artworks, loading 
                                 <div className="column-inner p-1">
                                     <img src={artworks[colSize * 4 + 1].photoURL} width="100%" alt={`id: ${artworks[colSize * 4 + 1]._id}`}></img>
                                     <div className="column-buttons m-1">
-                                        <Link
-                                            to={`/edit-artwork/${artworks[colSize * 4 + 1]._id}`}
-                                            className="btn btn-primary first-button"
-                                        >
-                                            Edit
-                                        </Link>
+                                        <button>
+                                            <Link
+                                                to={`/edit-artwork/${artworks[colSize * 4 + 1]._id}`}
+                                                className="btn btn-primary"
+                                            >
+                                                Edit
+                                            </Link>
+                                        </button>
                                         <button 
                                             className="btn btn-danger"
                                             onClick={() => deleteArtwork(artworks[colSize * 4 + 1]._id)}
@@ -114,15 +121,17 @@ const ArtworksTab = ({ getArtworks, deleteArtwork, artwork: { artworks, loading 
                         <div className="column">
                             {
                                 artworks.slice(colSize * 2, colSize * 3).map(art => (
-                                    <div className="column-inner p-1">
+                                    <div className="column-inner p-1" key={art._id}>
                                         <img src={art.photoURL} width="100%" alt={`id: ${art._id}`}></img>
                                         <div className="column-buttons m-1">
-                                            <Link
-                                                to={`/edit-artwork/${art._id}`}
-                                                className="btn btn-primary first-button"
-                                            >
-                                                Edit
-                                            </Link>
+                                           <button>
+                                                <Link
+                                                    to={`/edit-artwork/${art._id}`}
+                                                    className="btn btn-primary"
+                                                >
+                                                    Edit
+                                                </Link>
+                                           </button>
                                             <button 
                                                 className="btn btn-danger"
                                                 onClick={() => deleteArtwork(art._id)}
@@ -138,12 +147,14 @@ const ArtworksTab = ({ getArtworks, deleteArtwork, artwork: { artworks, loading 
                                 <div className="column-inner p-1">
                                     <img src={artworks[colSize * 4 + 2].photoURL} width="100%" alt={`id: ${artworks[colSize * 4 + 2]._id}`}></img>
                                     <div className="column-buttons m-1">
-                                        <Link
-                                            to={`/edit-artwork/${artworks[colSize * 4 + 2]._id}`}
-                                            className="btn btn-primary first-button"
-                                        >
-                                            Edit
-                                        </Link>
+                                        <button>
+                                            <Link
+                                                to={`/edit-artwork/${artworks[colSize * 4 + 2]._id}`}
+                                                className="btn btn-primary"
+                                            >
+                                                Edit
+                                            </Link>
+                                        </button>
                                         <button 
                                             className="btn btn-danger"
                                             onClick={() => deleteArtwork(artworks[colSize * 4 + 2]._id)}
@@ -157,15 +168,17 @@ const ArtworksTab = ({ getArtworks, deleteArtwork, artwork: { artworks, loading 
                         <div className="column">
                             {
                                 artworks.slice(colSize * 3, colSize * 4).map(art => (
-                                    <div className="column-inner p-1">
+                                    <div className="column-inner p-1" key={art._id}>
                                         <img src={art.photoURL} width="100%" alt={`id: ${art._id}`}></img>
                                         <div className="column-buttons m-1">
-                                            <Link
-                                                to={`/edit-artwork/${art._id}`}
-                                                className="btn btn-primary first-button"
-                                            >
-                                                Edit
-                                            </Link>
+                                            <button>
+                                                <Link
+                                                    to={`/edit-artwork/${art._id}`}
+                                                    className="btn btn-primary"
+                                                >
+                                                    Edit
+                                                </Link>
+                                            </button>
                                             <button 
                                                 className="btn btn-danger"
                                                 onClick={() => deleteArtwork(art._id)}
@@ -190,6 +203,7 @@ const ArtworksTab = ({ getArtworks, deleteArtwork, artwork: { artworks, loading 
 ArtworksTab.propTypes = {
     getArtworks: PropTypes.func.isRequired,
     deleteArtwork: PropTypes.func.isRequired,
+    clearArtwork: PropTypes.func.isRequired,
     artwork: PropTypes.object.isRequired,
 }
 
@@ -197,4 +211,4 @@ const mapStateToProps = state => ({
     artwork: state.artwork
 });
 
-export default connect(mapStateToProps, { getArtworks, deleteArtwork })(ArtworksTab)
+export default connect(mapStateToProps, { getArtworks, deleteArtwork, clearArtwork })(ArtworksTab)

@@ -1,6 +1,8 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './styles/App.scss';
+import 'semantic-ui-css/semantic.min.css';
+
 
 //Redux
 import { Provider } from 'react-redux'; // connects react with redux
@@ -31,9 +33,9 @@ const App = () => {
   return (
   <Provider store={store}>
     <Router>
-      <Fragment className="App">
+      <div className="App">
         <Navbar/>
-        <section classname="container">
+        <section>
           <Alert />
           <Switch>
             <Route exact path="/" component={Home} />
@@ -44,7 +46,7 @@ const App = () => {
             <Route exact path="/view-seminar/:id" component={ViewSeminar}/>
           </Switch>
         </section>
-      </Fragment>
+      </div>
     </Router>
   </Provider>
   )};

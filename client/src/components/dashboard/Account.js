@@ -61,7 +61,7 @@ const Account = ({ setPassword }) => {
                 </div>
                 <input 
                     type="submit"
-                    class="btn btn-primary"
+                    className="btn btn-primary"
                 />
             </form>
         </div>

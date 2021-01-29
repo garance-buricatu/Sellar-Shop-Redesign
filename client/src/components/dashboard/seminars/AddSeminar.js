@@ -142,7 +142,7 @@ const AddSeminar = ({ addSeminar }) => {
                         onChange={e => onChange(e)}
                     />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                 <p><input 
                     type="checkbox" 
                     name="recurring" 

@@ -8,7 +8,8 @@ import ProfileTab from './profile/ProfileTab';
 import SeminarTab from './seminars/SeminarTab';
 import AwardsTab from './awards/AwardsTab';
 import Account from './Account';
-//import Spinner from '../layout/Spinner';
+
+import { Icon } from 'semantic-ui-react';
 
 const Dashboard = ({ logout, auth: { loading, user } }) => {
     
@@ -29,7 +30,7 @@ const Dashboard = ({ logout, auth: { loading, user } }) => {
                                 {user && user.name}
                             </h1>
                             <p>Admin</p>
-                            <i class="fa fa-sort-desc carrot" aria-hidden="true"></i>
+                            <Icon name="caret down" className="carrot"/>
                         </div>
                         {show && 
                             <div className="menu">
@@ -37,42 +38,42 @@ const Dashboard = ({ logout, auth: { loading, user } }) => {
                                     className="list-item"
                                     onClick={() => setSelectedTab('artworks')}
                                 >
-                                    <i class="fa fa-picture-o" aria-hidden="true"></i>
+                                    <Icon name="images outline"/>
                                     <p className="text-menu">Edit Artworks</p>
                                 </div>
                                 <div 
                                     className="list-item"
                                     onClick={() => setSelectedTab('seminars')}
                                 >
-                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    <Icon name="calendar alternate outline"/>
                                     <p className="text-menu">Edit Seminar</p>
                                 </div>
                                 <div 
                                     className="list-item"
                                     onClick={() => setSelectedTab('profiles')}
                                 >
-                                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                    <Icon name="user outline"/>
                                     <p className="text-menu">Edit Profile</p>
                                 </div>
                                 <div 
                                     className="list-item"
                                     onClick={() => setSelectedTab('awards')}
                                 >
-                                    <i class="fa fa-trophy" aria-hidden="true"></i>
+                                    <Icon name="trophy"/>
                                     <p className="text-menu">Edit Awards and Videos</p>
                                 </div>
                                 <div 
                                 className="list-item"
                                 onClick={() => setSelectedTab('account')}
                             >
-                                <i class="fa fa-cog" aria-hidden="true"></i>
+                                <Icon name="cog" />
                                 <p className="text-menu">My Account</p>
                                 </div>
                                 <div 
                                     className="list-item"
                                     onClick={logout}
                                 >
-                                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                   <Icon name="sign out alternate"/>
                                     <p className="text-menu">Logout</p>
                                 </div>        
                             </div>

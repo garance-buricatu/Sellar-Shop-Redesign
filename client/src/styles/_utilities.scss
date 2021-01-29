@@ -11,43 +11,39 @@
 // Text styles
 
 .x-large {
+  font-family: "Raleway", sans-serif !important;
   font-size: 3rem;
   line-height: 1.2;
   position: relative;
 }
 
 .lead {
-  font-size: 1.3rem;
+  font-family: "Raleway", sans-serif !important;
+  font-size: 1.5rem;
   color: $dark-color;
 }
 
 .text-menu {
+  font-family: "Raleway", sans-serif !important;
   color: $dark-color;
   padding-left: 1rem;
+  font-size: 1.2rem;
 }
 
 .text-menu-home {
+  font-family: "Raleway", sans-serif !important;
   color: $dark-color;
-  font-size: 1rem;
-  padding-bottom: 1.25rem;
+  font-size: 1.3rem;
   cursor: pointer;
-  transition: 0.3s;
-
-  &:hover {
-    color: $button-color;
-  }
+  padding-bottom: 1.2rem;
 }
 
-.text-menu-small {
+.text-menu-home-true {
+  font-family: "Raleway", sans-serif !important;
   color: $dark-color;
-  font-size: 1rem;
-  padding-bottom: 0.5rem;
+  font-size: 1.3rem;
   cursor: pointer;
-  transition: 0.3s;
-
-  &:hover {
-    color: $button-color;
-  }
+  padding-bottom: 0.2rem;
 }
 
 .selected {
@@ -106,11 +102,11 @@
 
   &.btn-danger {
     font-family: "Raleway", sans-serif;
-    background: red;
+    background: lighten(red, 15%);
     color: $primary-color;
 
     &:hover {
-      background: #902020;
+      background: lighten(red, 20%);
     }
   }
 }
@@ -131,7 +127,7 @@
   }
 
   &.alert-success {
-    background-color: green;
+    background-color: lighten(green, 20%);
     color: white;
   }
 
@@ -139,4 +135,8 @@
     background-color: lighten(red, 20%);
     color: white;
   }
+}
+
+.anchor {
+  display: none;
 }

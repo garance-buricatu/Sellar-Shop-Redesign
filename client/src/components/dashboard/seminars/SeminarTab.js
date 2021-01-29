@@ -63,7 +63,7 @@ const SeminarTab = ({ getSeminars, seminar : { seminars } }) => {
                 }
                 {chosenSeminars.length > 0 && toggle && 
                     chosenSeminars.map(sem => (
-                        <SeminarEvent sem={sem} setToggle={setToggle} toggle={toggle}/>
+                        <SeminarEvent sem={sem} setToggle={setToggle} toggle={toggle} key={sem._id}/>
                     ))
                 }
             </div>

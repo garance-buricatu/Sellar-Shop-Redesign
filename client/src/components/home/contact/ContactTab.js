@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
 
 const ContactTab = props => {
@@ -16,10 +15,6 @@ const ContactTab = props => {
             </Link>
         </div>
     )
-}
-
-ContactTab.propTypes = {
-
 }
 
 export default ContactTab

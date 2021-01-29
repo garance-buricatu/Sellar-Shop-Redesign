@@ -44,17 +44,17 @@ const EditArtwork = ({ getArtwork, editArtwork, artwork: {artwork, loading}, mat
     }, [artwork, loading]);
 
     return (
-        <div className="edit-artwork">
-            <div><h1 className="form-text my-1">Edit Artwork</h1></div>
+        <div>
             {artwork === null || loading ? <Spinner /> : (
+            <div className="edit-artwork">
+                <div><h1 className="lead p-1">Edit Artwork</h1></div>
                 <img
                 width="30%"
                 src={photoURL}
                 alt={`artwork with id: ${artwork._id}`}
                 />
-            )} 
-            <div className="edit-artwork-inner m-2">
-                {artwork === null || loading ? <Spinner /> : (
+            
+                <div className="edit-artwork-inner m-2">
                     <form 
                         className="form"
                         onSubmit={e => onSubmit(e)}
@@ -140,8 +140,9 @@ const EditArtwork = ({ getArtwork, editArtwork, artwork: {artwork, loading}, mat
                         <Link className="btn" to="/dashboard">Back</Link>
                         <input type="submit" className="btn btn-primary"/>
                     </form>
-                )}
+                </div>
             </div>
+            )}
         </div>
     )
 }

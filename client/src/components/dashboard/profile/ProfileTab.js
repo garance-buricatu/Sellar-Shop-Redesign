@@ -54,7 +54,7 @@ const ProfileTab = ({ getBonnieProfile, createProfile, profile: { profile, loadi
         <Spinner />
     ) : (
         <Fragment>
-             <h1 className="lead m-2">Edit Profile</h1>
+             <h1 className="lead p-2">Edit Profile</h1>
             {profile !== null ? (
                 <Fragment>
                     <form className="form mx-2" onSubmit={e => onSubmit(e)}>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import { deleteSeminar } from '../../../actions/seminar'
 
-export const SeminarEvent = ({ sem, setToggle, toggle, deleteSeminar }) => {
+export const SeminarEvent = ({ sem, setToggle, toggle, key, deleteSeminar }) => {
 
     const onClick = () => {
         deleteSeminar(sem._id);
@@ -11,7 +11,7 @@ export const SeminarEvent = ({ sem, setToggle, toggle, deleteSeminar }) => {
     }
 
     return (
-        <div className="display-seminar m-1">
+        <div className="display-seminar m-1" key={key}>
             <div className="display-seminar-inner">
                 <img
                     src={sem.photoURL}

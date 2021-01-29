@@ -25,7 +25,7 @@ const Watercolor = ({ getArtworksWatercolor, clearArtwork, artwork: {loading, ar
                         <div className="column">
                             {
                                 artworks.slice(0, colSize).map(art => (
-                                    <Link to={`/view-artwork/${art._id}`}>
+                                    <Link to={`/view-artwork/${art._id}`} key={art._id}>
                                         <img src={art.photoURL} width="100%" alt={`id: ${art._id}`}></img>
                                     </Link>
                                 ))
@@ -40,7 +40,7 @@ const Watercolor = ({ getArtworksWatercolor, clearArtwork, artwork: {loading, ar
                         <div className="column">
                             {
                                 artworks.slice(colSize, colSize * 2).map(art => (
-                                    <Link to={`/view-artwork/${art._id}`}>
+                                    <Link to={`/view-artwork/${art._id}`} key={art._id}>
                                         <img src={art.photoURL} width="100%" alt={`id: ${art._id}`}></img>
                                     </Link>
                                 ))
@@ -55,7 +55,7 @@ const Watercolor = ({ getArtworksWatercolor, clearArtwork, artwork: {loading, ar
                         <div className="column">
                             {
                                 artworks.slice(colSize * 2, colSize * 3).map(art => (
-                                    <Link to={`/view-artwork/${art._id}`}>
+                                    <Link to={`/view-artwork/${art._id}`} key={art._id}>
                                         <img src={art.photoURL} width="100%" alt={`id: ${art._id}`}></img>
                                     </Link>
                                 ))
@@ -70,7 +70,7 @@ const Watercolor = ({ getArtworksWatercolor, clearArtwork, artwork: {loading, ar
                         <div className="column">
                             {
                                 artworks.slice(colSize * 3, colSize * 4).map(art => (
-                                    <Link to={`/view-artwork/${art._id}`}>
+                                    <Link to={`/view-artwork/${art._id}`} key={art._id}>
                                         <img src={art.photoURL} width="100%" alt={`id: ${art._id}`}></img>
                                     </Link>
                                 ))

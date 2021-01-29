@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router'
@@ -10,7 +9,7 @@ const Navbar = props => {
     return (
         <div className="navbar">
             <div className="dark-overlay">
-                <Link style={{ textDecoration: 'none' }} onClick={() => history.go(0)}>
+                <Link style={{ textDecoration: 'none' }} onClick={() => history.go(0)} to="">
                     <h1 className="x-large">
                         The Sellar Shop
                     </h1>
@@ -18,10 +17,6 @@ const Navbar = props => {
             </div>
         </div>
     )
-}
-
-Navbar.propTypes = {
-
 }
 
 export default Navbar

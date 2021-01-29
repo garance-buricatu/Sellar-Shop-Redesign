@@ -6,8 +6,9 @@ import { deleteVideo } from '../../../actions/profile'
 const AllVideos = ({videos, deleteVideo }) => {
 
     const allVideos = videos.map(vid => (
-        <div className="video p-1">
+        <div className="video p-1" key={vid._id}>
             <iframe 
+            title={vid._id}
             width="100%" 
             height="315" 
             src={vid !== null && vid.link.replace("watch?v=","embed/").split('&')[0]}

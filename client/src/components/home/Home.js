@@ -8,6 +8,8 @@ import ContactTab from './contact/ContactTab';
 import AboutTab from './about/AboutTab';
 import Latest from './Latest';
 
+import { Icon } from 'semantic-ui-react';
+
 const Home = props => {
 
     const [selectedTab, setSelectedTab] = useState('latest');
@@ -24,24 +26,24 @@ const Home = props => {
                         BONNIE FREDERICO
                     </h1>
                     <p>Artist</p>
-                    <i class="fa fa-sort-desc carrot" aria-hidden="true"></i>
+                    <Icon name="caret down" className="carrot"/>
                 </div>
                 {show &&
                     <div className="sidebar-inner my-2">
                         <div className="dropdown">
-                            <h1 className={`text-menu-small dropdown-btn`} onClick={() => setShowDropdown(!showDropdown)}>PAINTINGS</h1>
+                            <h1 className={`text-menu-home${showDropdown ? '-true' : ''}`} onClick={() => setShowDropdown(!showDropdown)}>PAINTINGS</h1>
                             {showDropdown && 
                                 <div className="dropdown-content">
                                     <p 
-                                        className={`text-menu-small ${selectedTab === 'watercolor' ? 'selected' : ''}`}
+                                        className={`${selectedTab === 'watercolor' ? 'selected' : ''}`}
                                         onClick={() => setSelectedTab('watercolor')}
                                     >Watercolor</p>
                                     <p 
-                                        className={`text-menu-small ${selectedTab === 'pencil' ? 'selected' : ''}`}
+                                        className={`${selectedTab === 'pencil' ? 'selected' : ''}`}
                                         onClick={() => setSelectedTab('pencil')}    
                                     >Pencil</p>
                                     <p 
-                                        className={`text-menu-small ${selectedTab === 'oil' ? 'selected' : ''}`}
+                                        className={`${selectedTab === 'oil' ? 'selected' : ''}`}
                                         onClick={() => setSelectedTab('oil')}
                                     >Oil</p>
                                 </div>
@@ -49,19 +51,19 @@ const Home = props => {
                         </div>
                         <div>
                         <h1 
-                            className={`text-menu-small ${selectedTab === 'seminars' ? 'selected' : ''}`}
+                            className={`text-menu-home ${selectedTab === 'seminars' ? 'selected' : ''}`}
                             onClick={() => setSelectedTab('seminars')}
                         >SEMINARS</h1>
                         </div>
                         <div>
                         <h1 
-                            className={`text-menu-small ${selectedTab === 'about' ? 'selected' : ''}`}
+                            className={`text-menu-home ${selectedTab === 'about' ? 'selected' : ''}`}
                             onClick={() => setSelectedTab('about')}
                         >ABOUT THE ARTIST</h1>
                         </div>
                         <div>
                         <h1 
-                            className={`text-menu-small ${selectedTab === 'contact' ? 'selected' : ''}`}
+                            className={`text-menu-home ${selectedTab === 'contact' ? 'selected' : ''}`}
                             onClick={() => setSelectedTab('contact')}    
                         >CONTACT</h1>
                         </div>

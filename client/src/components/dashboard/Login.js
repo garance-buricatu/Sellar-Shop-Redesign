@@ -59,7 +59,7 @@ const Login = ({ loginUser, isAuthenticated }) => {
                     </div>
                     <input 
                         type="submit"
-                        class="btn btn-primary"
+                        className="btn btn-primary"
                     />
                 </form>
             </div>
