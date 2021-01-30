@@ -30,7 +30,7 @@ const ArtworksTab = ({ getArtworks, deleteArtwork, clearArtwork, artwork: { artw
                                     <div className="column-inner p-1" key={art._id}>
                                         <img src={art.photoURL} width="100%" alt={`id: ${art._id}`}></img>
                                         <div className="column-buttons m-1">
-                                            <button>
+                                            <button className="first-button">
                                             <Link
                                                 to={`/edit-artwork/${art._id}`}
                                                 className="btn btn-primary"
@@ -53,7 +53,7 @@ const ArtworksTab = ({ getArtworks, deleteArtwork, clearArtwork, artwork: { artw
                                     <div className="column-inner p-1">
                                         <img src={artworks[colSize * 4].photoURL} width="100%" alt={`id: ${artworks[colSize * 4]._id}`}></img>
                                         <div className="m-1 column-buttons m-1">
-                                            <button>
+                                            <button className="first-button">
                                                 <Link
                                                     to={`/edit-artwork/${artworks[colSize * 4]._id}`}
                                                     className="btn btn-primary"
@@ -77,7 +77,7 @@ const ArtworksTab = ({ getArtworks, deleteArtwork, clearArtwork, artwork: { artw
                                     <div className="column-inner p-1" key={art._id}>
                                         <img src={art.photoURL} width="100%" alt={`id: ${art._id}`}></img>
                                         <div className="column-buttons m-1">
-                                            <button>
+                                            <button className="first-button">
                                                 <Link
                                                     to={`/edit-artwork/${art._id}`}
                                                     className="btn btn-primary"
@@ -100,7 +100,7 @@ const ArtworksTab = ({ getArtworks, deleteArtwork, clearArtwork, artwork: { artw
                                 <div className="column-inner p-1">
                                     <img src={artworks[colSize * 4 + 1].photoURL} width="100%" alt={`id: ${artworks[colSize * 4 + 1]._id}`}></img>
                                     <div className="column-buttons m-1">
-                                        <button>
+                                        <button className="first-button">
                                             <Link
                                                 to={`/edit-artwork/${artworks[colSize * 4 + 1]._id}`}
                                                 className="btn btn-primary"
@@ -124,7 +124,7 @@ const ArtworksTab = ({ getArtworks, deleteArtwork, clearArtwork, artwork: { artw
                                     <div className="column-inner p-1" key={art._id}>
                                         <img src={art.photoURL} width="100%" alt={`id: ${art._id}`}></img>
                                         <div className="column-buttons m-1">
-                                           <button>
+                                           <button className="first-button">
                                                 <Link
                                                     to={`/edit-artwork/${art._id}`}
                                                     className="btn btn-primary"
@@ -147,7 +147,7 @@ const ArtworksTab = ({ getArtworks, deleteArtwork, clearArtwork, artwork: { artw
                                 <div className="column-inner p-1">
                                     <img src={artworks[colSize * 4 + 2].photoURL} width="100%" alt={`id: ${artworks[colSize * 4 + 2]._id}`}></img>
                                     <div className="column-buttons m-1">
-                                        <button>
+                                        <button className="first-button">
                                             <Link
                                                 to={`/edit-artwork/${artworks[colSize * 4 + 2]._id}`}
                                                 className="btn btn-primary"
@@ -171,7 +171,7 @@ const ArtworksTab = ({ getArtworks, deleteArtwork, clearArtwork, artwork: { artw
                                     <div className="column-inner p-1" key={art._id}>
                                         <img src={art.photoURL} width="100%" alt={`id: ${art._id}`}></img>
                                         <div className="column-buttons m-1">
-                                            <button>
+                                            <button className="first-button">
                                                 <Link
                                                     to={`/edit-artwork/${art._id}`}
                                                     className="btn btn-primary"
