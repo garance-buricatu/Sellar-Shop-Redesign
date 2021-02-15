@@ -13,5 +13,12 @@
 2) Private pages (the dashboard) which can be accessed from the "Contact" tab
 - The dashboard requires authentication to access and allows the user to add, delete, and edit the content that is displayed on the public pages
 
-### To Start from cloned repository
-Open terminal and run "npm run dev"
+### Install Dependencies
+```
+npm install
+```
+### Run App
+```
+# in development mode
+npm run dev
+```
