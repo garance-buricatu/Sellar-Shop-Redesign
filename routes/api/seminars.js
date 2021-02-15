@@ -17,9 +17,8 @@ router.post(
             [
                 check('project', 'Project of seminar is required').not().isEmpty(),
                 check('details', 'Details of seminar are required').not().isEmpty(),
-                check('startTime', 'Start time of seminar is required').not().isEmpty(),
-                check('endTime', 'End time of seminar is required').not().isEmpty(),
-                check('dateOfEvent', 'Date of seminar is required').not().isEmpty()
+                check('seminarDates', 'At least 1 seminar date and time is required').isArray({min: 1})
+                
             ]
     ],
     async (req, res) => {
@@ -33,12 +32,10 @@ router.post(
             photoURL,
             location,
             project,
+            instructor,
             details,
             difficulty,
-            startTime,
-            endTime,
-            dateOfEvent,
-            recurring
+            seminarDates
         } = req.body;
 
         // Build a seminar object
@@ -49,11 +46,14 @@ router.post(
         if (location) seminarFields.location = location;
         if (project) seminarFields.project = project;
         if (details) seminarFields.details = details;
+        if (instructor) seminarFields.instructor = instructor;
         if (difficulty) seminarFields.difficulty = difficulty;
-        if (startTime) seminarFields.startTime = startTime;
-        if (endTime) seminarFields.endTime = endTime;
-        if (dateOfEvent) seminarFields.dateOfEvent = dateOfEvent;
-        if (recurring) seminarFields.recurring = recurring;
+        if (seminarDates) {
+            if (seminarFields.seminarDates == null) seminarFields.seminarDates = seminarDates;
+            else {
+                seminarFields.seminarDates.unshift(seminarDates);
+            }
+        }
 
         try {
             let seminar = new Seminar(seminarFields);

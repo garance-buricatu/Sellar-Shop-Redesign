@@ -1,9 +1,31 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { addSeminar } from '../../../actions/seminar'
 
+import { Icon } from 'semantic-ui-react';
+import DateInput from './DateInput';
+
 const AddSeminar = ({ addSeminar }) => {
+
+    const [semDates, setSemDates] = useState([]);
+
+    const [formData, setFormData] = useState({
+        photoURL:'',
+        location:'',
+        project:'',
+        details:'',
+        difficulty:'',
+        seminarDates: []
+    });
+
+    const { photoURL, location, project, details, difficulty } = formData;
+
+    //https://stackoverflow.com/questions/42316604/how-to-implement-a-dynamic-form-with-controlled-components-in-reactjs
+
+    const addDateForm = () => {
+        setSemDates(prevArr => [...prevArr, '']);
+    }
 
     const onChange = (e) => {
         setFormData({
@@ -12,22 +34,15 @@ const AddSeminar = ({ addSeminar }) => {
         });
     }
 
-    const [formData, setFormData] = useState({
-        photoURL:'',
-        location:'',
-        project:'',
-        details:'',
-        difficulty:'',
-        startTime:'',
-        endTimeTime:'',
-        dateOfEvent: '',
-        recurring: false
-    });
-
-    const { photoURL, location, project, details, difficulty, startTime, endTime, dateOfEvent, recurring } = formData;
+    useEffect(() => {
+        setFormData({
+            ...formData,
+            seminarDates: semDates
+        });
+    }, [semDates]);
 
     const onSubmit = e => {
-        e.preventDefault();
+        e.preventDefault();        
         addSeminar(formData);
         setFormData({
             photoURL:'',
@@ -35,10 +50,7 @@ const AddSeminar = ({ addSeminar }) => {
             project:'',
             details:'',
             difficulty:'',
-            startTime:'',
-            endTime:'',
-            dateOfEvent: '',
-            recurring: false
+            seminarDates: []
         });
     }
 
@@ -108,52 +120,13 @@ const AddSeminar = ({ addSeminar }) => {
                 </select>
                 </div>
                 <div className="form-group">
-                    <p className="form-text">
-                        <strong>Date of Seminar : </strong>
-                    </p>
-                    <input 
-                        type="date"
-                        name="dateOfEvent"
-                        value={dateOfEvent}
-                        onChange={e => onChange(e)}
+                    <Icon 
+                        name="plus" 
+                        onClick={() => addDateForm()}
                     />
+                    Add a date and time
                 </div>
-                <div className="form-group">
-                    <p className="form-text">
-                        <strong>Start time : </strong>
-                    </p>
-                    <input 
-                        type="text"
-                        placeholder="HH:MM AM"
-                        name="startTime"
-                        value={startTime}
-                        onChange={e => onChange(e)}
-                    />
-                </div>
-                <div className="form-group">
-                    <p className="form-text">
-                        <strong>End time : </strong>
-                    </p>
-                    <input 
-                        type="text"
-                        placeholder="HH:MM AM"
-                        name="endTime"
-                        value={endTime}
-                        onChange={e => onChange(e)}
-                    />
-                </div>
-                <div className="form-group">
-                <p><input 
-                    type="checkbox" 
-                    name="recurring" 
-                    checked={recurring}
-                    value={recurring} 
-                    onChange={e => {
-                        setFormData({...formData, recurring: !recurring});
-                        }
-                    }
-                    /> {' '}Recurring</p>
-                </div>
+                {semDates.map((el, i) => <DateInput i={i} semDates={semDates} setSemDates={setSemDates} key={i}/>)}
                 <input type="Submit" className="btn btn-primary my-2"/>
             </form>
         </div>

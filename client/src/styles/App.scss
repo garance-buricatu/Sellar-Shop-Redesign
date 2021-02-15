@@ -264,6 +264,23 @@ button {
   }
 }
 
+.date-input {
+  position: relative;
+  background-color: $hover-color;
+  margin-bottom: 1rem;
+  border-radius: 15px;
+
+  .remove-date {
+    position: absolute;
+    top: 5px;
+    right: -1px;
+  }
+
+  &-inner {
+    padding-bottom: 1rem;
+  }
+}
+
 .home {
   display: grid;
   grid-template-columns: minmax(300px, 15%) 1fr;
@@ -337,6 +354,11 @@ button {
   img {
     width: 30%;
     box-shadow: 0 0 25px rgba(63, 42, 42, 0.5);
+  }
+
+  p {
+    padding: 0;
+    margin: 0.25rem;
   }
 }
 

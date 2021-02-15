@@ -22,30 +22,49 @@ const SeminarTab = ({ getSeminars, seminar : { seminars } }) => {
     }, [getSeminars]);
 
     useEffect(() => { 
-        const allSeminars = seminars.map(sem => new Date(sem.dateOfEvent));
+        const allSeminars = seminars.map(sem => (
+            sem.seminarDates.map(semDate => new Date(semDate.dateOfEvent))
+        ));
+
+        console.log(allSeminars);
         
         let tempSems = [];
-        allSeminars.forEach(sem => tempSems.push({
-            "year": sem.getFullYear(),
-            "month": sem.getMonth() + 1,
-            "day": sem.getDate() + 1,
-            "className": "purpleDay"
-        }));
+
+        if (allSeminars.length > 0) {
+            allSeminars.map(seminar => (
+                seminar.forEach(seminar => tempSems.push({
+                    "year": seminar.getFullYear(),
+                    "month": seminar.getMonth() + 1,
+                    "day": seminar.getDate() + 1,
+                    "className": "purpleDay"
+                }))
+            ));
+        }
 
         setSelectedSeminars(tempSems);
     }, [seminars]);
 
     const setSelectedDays = (date) => {
-        let tempSeminars = seminars.filter(sem => ( // get seminar dates that macth with click item in calendar
-            new Date(sem.dateOfEvent).getDate() === (date.day - 1) &&
-            new Date(sem.dateOfEvent).getMonth() === (date.month -1)  &&
-            new Date(sem.dateOfEvent).getFullYear() === date.year
-        ));
+        let tempSeminars = filterByDate(date);
+        console.log(tempSeminars);
 
         setCurrDate(new Date(date.year, date.month - 1, date.day));
         setChosenSeminars(tempSeminars);
         setToggle(!toggle);
     };
+
+    // filter array by nested array
+    const filterByDate = function (date) {
+        return seminars.filter(
+          sem => sem.seminarDates.some(
+            semDate => (
+                new Date(semDate.dateOfEvent).getDate() === (date.day - 1) &&
+                new Date(semDate.dateOfEvent).getMonth() === (date.month -1)  &&
+                new Date(semDate.dateOfEvent).getFullYear() === date.year
+            )
+          )
+        );
+      }
 
     return (
         <div className="seminar p-1">
@@ -63,7 +82,7 @@ const SeminarTab = ({ getSeminars, seminar : { seminars } }) => {
                 }
                 {chosenSeminars.length > 0 && toggle && 
                     chosenSeminars.map(sem => (
-                        <SeminarEvent sem={sem} setToggle={setToggle} toggle={toggle} key={sem._id}/>
+                        <SeminarEvent sem={sem} setToggle={setToggle} toggle={toggle} key={sem._id} currDate={currDate}/>
                     ))
                 }
             </div>

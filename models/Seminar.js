@@ -15,6 +15,9 @@ const SeminarSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    instructor: {
+        type: String
+    },
     details: {
         type: String,
         required: true
@@ -22,26 +25,26 @@ const SeminarSchema = new mongoose.Schema({
     difficulty: {
         type: String,
     },
-    startTime: {
-        type: String,
-        required: true
-    },
-    endTime: {
-        type: String,
-        required: true
-    },
-    dateOfEvent: {
-        type: Date,
-        required: true,
-        default: Date.now
-    },
+    seminarDates : [
+       { 
+            startTime: {
+                type: String,
+                required: true
+            },
+            endTime: {
+                type: String,
+                required: true
+            },
+            dateOfEvent: {
+                type: Date,
+                required: true,
+                default: Date.now
+            }
+        }
+    ],
     date: {
         type: Date,
         default: Date.now
-    },
-    recurring : {
-        type: Boolean,
-        default: false
     }
 });
 

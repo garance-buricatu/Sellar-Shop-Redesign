@@ -3,12 +3,22 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import { deleteSeminar } from '../../../actions/seminar'
 
-export const SeminarEvent = ({ sem, setToggle, toggle, key, deleteSeminar }) => {
+export const SeminarEvent = ({ sem, setToggle, toggle, key, currDate, deleteSeminar }) => {
 
     const onClick = () => {
         deleteSeminar(sem._id);
         setToggle(!toggle);
     }
+
+    const getDateToDisplay = () => {
+        return sem.seminarDates.filter(semDate => (
+            new Date(semDate.dateOfEvent).getDate()+1 === currDate.getDate() &&
+            new Date (semDate.dateOfEvent).getMonth() === currDate.getMonth() &&
+            new Date(semDate.dateOfEvent).getFullYear() === currDate.getFullYear()
+        ))
+    }
+
+    const dateToDisplay = getDateToDisplay();
 
     return (
         <div className="display-seminar m-1" key={key}>
@@ -38,15 +48,15 @@ export const SeminarEvent = ({ sem, setToggle, toggle, key, deleteSeminar }) => 
                             <p className="form-text seminar-text"><strong>Details: </strong></p>
                             {sem.details === null ? 'N/A' : sem.details}
                         </li>
+                        
                         <li>
-                            <p className="form-text seminar-text"><strong>Start Time: </strong></p>
-                            {sem.startTime === null ? 'N/A' : sem.startTime}
+                            <p className="form-text seminar-text"><strong>Time: </strong></p>
+                            {dateToDisplay.startTime === null || dateToDisplay.endTime === null ? 
+                                'N/A' : (
+                                    `${dateToDisplay[0].startTime} - ${dateToDisplay[0].endTime}`
+                                )
+                            }
                         </li>
-                        <li>
-                            <p className="form-text seminar-text"><strong>End Time: </strong></p>
-                            {sem.endTime === null ? 'N/A' : sem.endTime}
-                        </li>
-                        {sem.recurring === null || sem.recurring === false ? '' : <li><p className="form-text seminar-text"><strong>Recurring</strong></p></li>}
                     </ul>
                 </div>
             </div>
